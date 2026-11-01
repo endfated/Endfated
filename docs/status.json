@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T15:14:08.928Z",
+  "updatedAt": "2026-11-01T15:15:56.104Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -7,6 +7,7 @@
       "url": "https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb",
       "priority": 1,
       "status": "out_of_stock",
+      "reason": "jsonld",
       "price": 899.99,
       "lastInStockAt": null,
       "note": "URL from search; page text \"Derzeit nicht vorrätig\" seen when OOS; max 1 per order; queue/bot protection likely",
@@ -19,6 +20,7 @@
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
       "status": "out_of_stock",
+      "reason": "jsonld",
       "price": 899.99,
       "lastInStockAt": null,
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
@@ -31,6 +33,7 @@
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
       "status": "out_of_stock",
+      "reason": "jsonld",
       "price": 899.99,
       "lastInStockAt": null,
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
@@ -43,10 +46,11 @@
       "url": "https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html",
       "priority": 4,
       "status": "unknown",
+      "reason": "no_signal",
       "price": null,
       "lastInStockAt": null,
       "note": "URL from search; markers guessed, unverified",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": null
     },
     {
@@ -55,10 +59,11 @@
       "url": "https://www.amazon.de/dp/B0DHSV68YZ",
       "priority": 5,
       "status": "unknown",
+      "reason": "blocked",
       "price": null,
       "lastInStockAt": null,
       "note": "ASIN unverified (alt: B0FRYBZR91 CFI-7121, B0DM8SFRJV); check seller = Amazon; captcha likely",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": null
     },
     {
@@ -67,10 +72,11 @@
       "url": "https://www.otto.de/p/playstation-5-playstation-5-pro-2tb-playstation-5-pro-konsole-C1914416905/",
       "priority": 6,
       "status": "unknown",
+      "reason": "no_signal",
       "price": null,
       "lastInStockAt": null,
       "note": "Marketplace-priced (~1389+ EUR), unverified markers; Otto also lists bundles",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": null
     },
     {
@@ -79,6 +85,7 @@
       "url": "https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951",
       "priority": 7,
       "status": "out_of_stock",
+      "reason": "jsonld",
       "price": 899.99,
       "lastInStockAt": null,
       "note": "URL from search (2 variants of listing exist: .../Sony-Interactive-Entertainment/...); markers guessed",
@@ -91,10 +98,11 @@
       "url": "https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-pro-konsole-4065465034645",
       "priority": 8,
       "status": "unknown",
+      "reason": "short",
       "price": null,
       "lastInStockAt": null,
       "note": "URL from search; markers guessed, unverified",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": null
     },
     {
@@ -103,10 +111,11 @@
       "url": "https://geizhals.de/sony-playstation-5-pro-2tb-weiss-a3298140.html",
       "priority": 9,
       "status": "unknown",
+      "reason": "blocked",
       "price": null,
       "lastInStockAt": null,
       "note": "Aggregator; shows offers incl. marketplace sellers at inflated prices; markers guessed",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": null
     }
   ],
