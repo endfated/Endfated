@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T15:17:45.919Z",
+  "updatedAt": "2026-11-01T15:46:37.171Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -65,19 +65,33 @@
       "note": "URL from search (2 variants of listing exist: .../Sony-Interactive-Entertainment/...); markers guessed",
       "unknownStreak": 0,
       "known": "out_of_stock"
+    }
+  ],
+  "disabled": [
+    {
+      "id": "amazon",
+      "name": "Amazon.de",
+      "url": "https://www.amazon.de/dp/B0DHSV68YZ"
+    },
+    {
+      "id": "otto",
+      "name": "Otto",
+      "url": "https://www.otto.de/p/playstation-5-playstation-5-pro-2tb-playstation-5-pro-konsole-C1914416905/"
+    },
+    {
+      "id": "euronics",
+      "name": "Euronics",
+      "url": "https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-pro-konsole-4065465034645"
+    },
+    {
+      "id": "geizhals",
+      "name": "Geizhals (aggregator)",
+      "url": "https://geizhals.de/sony-playstation-5-pro-2tb-weiss-a3298140.html"
     },
     {
       "id": "galaxus",
       "name": "Galaxus",
-      "url": "https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254",
-      "priority": 5,
-      "status": "unknown",
-      "reason": "error",
-      "price": null,
-      "lastInStockAt": null,
-      "note": "Swiss retailer, trusted in DE; URL from search, markers unverified",
-      "unknownStreak": 1,
-      "known": null
+      "url": "https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254"
     }
   ],
   "history": [
