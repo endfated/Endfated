@@ -55,6 +55,8 @@ export function classify(html, store = {}) {
   for (const [status, list = []] of [['out_of_stock', store.outOfStock], ['in_stock', store.inStock]]) {
     if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null, reason: 'marker' };
   }
+  // shops that only show a buy button when in stock
+  if (store.missingBuyMeansOut) return { status: 'out_of_stock', price: null, reason: 'no_buy_button' };
   return none('no_signal');
 }
 

@@ -1,6 +1,8 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import stores from './stores.js';
+import allStores from './stores.js';
+
+const stores = allStores.filter((s) => !s.disabled);
 import { classify, fetchPage, pageText } from './check.js';
 import { notify } from './notify.js';
 
@@ -23,7 +25,10 @@ const old = Object.fromEntries((prev.stores || []).map((s) => [s.id, s]));
 async function checkStore(browser, s) {
   try {
     const { html, http, title } = await fetchPage(browser, s.url);
-    const r = { ...classify(html, s), http, title: title.slice(0, 50) };
+    const r = http >= 400
+      ? { status: 'unknown', price: null, reason: 'blocked' }
+      : classify(html, s);
+    Object.assign(r, { http, title: title.slice(0, 50) });
     if (r.reason === 'no_signal') {
       // diagnose: text around availability words, to tune markers
       const t = pageText(html);

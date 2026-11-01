@@ -39,3 +39,9 @@ test('captcha -> unknown', () => {
 test('very short html -> unknown', () => {
   assert.equal(classify('<html></html>', store).status, 'unknown');
 });
+
+test('missingBuyMeansOut: no buy button -> out_of_stock', () => {
+  const html = `<html><body>${pad}<a>Warenkorb 0</a></body></html>`;
+  assert.equal(classify(html, { ...store, missingBuyMeansOut: true }).status, 'out_of_stock');
+  assert.equal(classify(html, store).status, 'unknown');
+});
