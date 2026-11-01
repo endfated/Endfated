@@ -16,7 +16,7 @@ export default [
     note: 'Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked' },
   { id: 'expert', name: 'expert', priority: 4,
     url: 'https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html',
-    inStock: ['in den warenkorb'], outOfStock: ['derzeit nicht verfügbar', 'nicht lieferbar'], missingBuyMeansOut: true,
+    inStock: ['in den warenkorb'], outOfStock: ['derzeit nicht verfügbar', 'nicht lieferbar'], missingBuyMeansOut: true, expectText: 'playstation®5 pro',
     note: 'No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)' },
   { id: 'amazon', disabled: true, // bot protection blocks automated checks (verified 2026-11-01)
     name: 'Amazon.de', priority: 5,
@@ -43,7 +43,7 @@ export default [
     inStock: ['sofort lieferbar', 'auf lager'], outOfStock: ['keine angebote'],
     note: 'Aggregator; shows offers incl. marketplace sellers at inflated prices; markers guessed' },
   { id: 'galaxus', disabled: true, // connection refused for automated checks (verified 2026-11-01)
-    name: 'Galaxus', priority: 5,
+    name: 'Galaxus', priority: 10,
     url: 'https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254',
     inStock: ['in den warenkorb'], outOfStock: ['momentan nicht an lager', 'nicht lieferbar', 'ausverkauft'],
     note: 'Swiss retailer, trusted in DE; URL from search, markers unverified' },

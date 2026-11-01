@@ -43,7 +43,14 @@ export function pageText(html) {
     .toLowerCase();
 }
 
-// reason: jsonld | marker | blocked | no_signal | short
+// HTTP error -> reason (only used when the page itself gave no stock signal)
+export function httpReason(code) {
+  if ([401, 403, 429].includes(code)) return 'blocked';
+  if ([404, 410].includes(code)) return 'not_found';
+  return code >= 400 ? 'error' : null;
+}
+
+// reason: jsonld | marker | no_buy_button | blocked | no_signal | short
 export function classify(html, store = {}) {
   const none = (reason) => ({ status: 'unknown', price: null, reason });
   if (typeof html !== 'string' || html.length < 300) return none('short');
@@ -56,7 +63,8 @@ export function classify(html, store = {}) {
     if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null, reason: 'marker' };
   }
   // shops that only show a buy button when in stock
-  if (store.missingBuyMeansOut) return { status: 'out_of_stock', price: null, reason: 'no_buy_button' };
+  // only if this is clearly the product page (else a broken/changed page would hide as 'sold out')
+  if (store.missingBuyMeansOut && store.expectText && text.includes(store.expectText.toLowerCase())) return { status: 'out_of_stock', price: null, reason: 'no_buy_button' };
   return none('no_signal');
 }
 

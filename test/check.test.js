@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classify } from '../src/check.js';
+import { classify, httpReason } from '../src/check.js';
 
 const store = { inStock: ['in den warenkorb'], outOfStock: ['nicht vorrätig'] };
 const pad = '<p>' + 'x '.repeat(200) + '</p>';
@@ -40,8 +40,30 @@ test('very short html -> unknown', () => {
   assert.equal(classify('<html></html>', store).status, 'unknown');
 });
 
-test('missingBuyMeansOut: no buy button -> out_of_stock', () => {
-  const html = `<html><body>${pad}<a>Warenkorb 0</a></body></html>`;
-  assert.equal(classify(html, { ...store, missingBuyMeansOut: true }).status, 'out_of_stock');
+const buyOnly = { ...store, missingBuyMeansOut: true, expectText: 'PlayStation®5 Pro' };
+
+test('missingBuyMeansOut: product page without buy button -> out_of_stock', () => {
+  const html = `<html><body>${pad}<h1>PlayStation®5 Pro</h1><a>Warenkorb 0</a></body></html>`;
+  assert.equal(classify(html, buyOnly).status, 'out_of_stock');
   assert.equal(classify(html, store).status, 'unknown');
+});
+
+test('missingBuyMeansOut: unexpected page stays unknown (streak alarm still works)', () => {
+  const html = `<html><body>${pad}<h1>Seite nicht gefunden</h1></body></html>`;
+  assert.equal(classify(html, buyOnly).reason, 'no_signal');
+});
+
+test('missingBuyMeansOut: block page and JSON-LD take precedence', () => {
+  const blocked = `<html><body>${pad}<h1>PlayStation®5 Pro</h1>captcha</body></html>`;
+  assert.equal(classify(blocked, buyOnly).reason, 'blocked');
+  const r = classify(ld({ offers: { availability: 'https://schema.org/InStock' } }), buyOnly);
+  assert.equal(r.status, 'in_stock');
+});
+
+test('httpReason mapping', () => {
+  assert.equal(httpReason(403), 'blocked');
+  assert.equal(httpReason(429), 'blocked');
+  assert.equal(httpReason(404), 'not_found');
+  assert.equal(httpReason(503), 'error');
+  assert.equal(httpReason(200), null);
 });

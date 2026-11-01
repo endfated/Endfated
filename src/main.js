@@ -1,10 +1,10 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import allStores from './stores.js';
+import { classify, fetchPage, pageText, httpReason } from './check.js';
+import { notify } from './notify.js';
 
 const stores = allStores.filter((s) => !s.disabled);
-import { classify, fetchPage, pageText } from './check.js';
-import { notify } from './notify.js';
 
 const STATUS_FILE = new URL('../docs/status.json', import.meta.url);
 const args = process.argv.slice(2);
@@ -25,9 +25,8 @@ const old = Object.fromEntries((prev.stores || []).map((s) => [s.id, s]));
 async function checkStore(browser, s) {
   try {
     const { html, http, title } = await fetchPage(browser, s.url);
-    const r = http >= 400
-      ? { status: 'unknown', price: null, reason: 'blocked' }
-      : classify(html, s);
+    const r = classify(html, s);
+    if (r.status === 'unknown' && httpReason(http)) r.reason = httpReason(http);
     Object.assign(r, { http, title: title.slice(0, 50) });
     if (r.reason === 'no_signal') {
       // diagnose: text around availability words, to tune markers
@@ -96,7 +95,8 @@ stores.forEach((s, i) => {
   }
 });
 
-const status = { updatedAt: now, stores: out, history: history.slice(0, 200) };
+const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => ({ id, name, url }));
+const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
 console.table(out.map(({ id, status, price }, i) => ({ id, status, price, reason: results[i].reason, http: results[i].http, title: results[i].title })));
 if (dry) {
