@@ -22,3 +22,9 @@ npm test
 ```
 
 Ohne `NTFY_TOPIC` werden Pushes nur geloggt. Ist `HTTPS_PROXY` gesetzt, nutzt Chromium diesen Proxy.
+
+## Hinweise
+
+- **Preisgrenze:** Pushes gibt es nur bis `MAX_PRICE` (Standard 1000 €), damit Scalper-/Marketplace-Angebote nicht nerven. Anpassbar als Env-Variable im Workflow.
+- **Keine Fehlalarme:** Blockierte Seiten (Captcha, Fehler) zählen als „unbekannt“, nie als „verfügbar“. Ist ein Shop 48 Läufe (~1 Tag) in Folge unbekannt, kommt eine leise Push-Meldung – dann URL/Marker in `src/stores.js` prüfen.
+- **Shop-URLs & Marker** (`src/stores.js`) stammen aus Web-Recherche und sind noch nicht live geprüft. Nach den ersten Läufen im Actions-Log (Tabelle) kontrollieren und ggf. anpassen.

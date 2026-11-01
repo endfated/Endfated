@@ -56,7 +56,7 @@ stores.forEach((s, i) => {
   const streak = r.status === 'unknown' ? (o.unknownStreak || 0) + 1 : 0;
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
-    status: r.status, price: r.price, checkedAt: now,
+    status: r.status, price: r.price,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak,
     known: r.status === 'unknown' ? o.known || null : r.status,

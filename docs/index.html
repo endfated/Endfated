@@ -50,7 +50,7 @@ function ago(iso){
 }
 async function load(){
   try{
-    const r=await fetch('status.json?t='+Date.now(),{cache:'no-store'});
+    const r=await fetch('status.json',{cache:'no-store'});
     if(!r.ok)throw new Error(r.status);
     const d=await r.json();
     document.getElementById('upd').textContent='Aktualisiert '+ago(d.updatedAt);
@@ -61,7 +61,7 @@ async function load(){
         <div class="info">
           <div class="name">${esc(s.name)}</div>
           <div class="lbl">${L[s.status]||'Unbekannt'}${s.price!=null?' · '+eur(s.price):''}</div>
-          <div class="meta">Geprüft ${ago(s.checkedAt)}${s.lastInStockAt?' · zuletzt verfügbar '+ago(s.lastInStockAt):''}</div>
+          <div class="meta">${s.lastInStockAt?'Zuletzt verfügbar '+ago(s.lastInStockAt):'Noch nie verfügbar gesehen'}</div>
           ${s.note?`<div class="meta">${esc(s.note)}</div>`:''}
         </div>
         <a class="btn" href="${esc(s.url)}" target="_blank" rel="noopener">Zum Shop</a>

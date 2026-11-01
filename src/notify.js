@@ -1,12 +1,15 @@
-export async function notify({ title, message, url, priority }) {
+export async function notify({ title, message, url, priority = 'default' }) {
   const topic = process.env.NTFY_TOPIC;
   if (!topic) {
     console.log(`[notify skipped, NTFY_TOPIC unset] ${title} - ${message}`);
     return;
   }
-  const headers = { Title: `=?UTF-8?B?${Buffer.from(title).toString('base64')}?=`, Tags: 'video_game' };
-  if (url) headers.Click = url;
-  if (priority) headers.Priority = String(priority);
-  const res = await fetch(`https://ntfy.sh/${topic}`, { method: 'POST', headers, body: message });
+  // JSON publish: UTF-8 title/emoji without header encoding
+  const priorities = { min: 1, low: 2, default: 3, high: 4, urgent: 5 };
+  const res = await fetch('https://ntfy.sh/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ topic, title, message, click: url, priority: priorities[priority] ?? 3, tags: ['video_game'] }),
+  });
   if (!res.ok) throw new Error(`ntfy ${res.status}`);
 }

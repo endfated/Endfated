@@ -6,7 +6,7 @@ function ldObjects(html) {
   const walk = (n) => {
     if (Array.isArray(n)) return n.forEach(walk);
     if (n && typeof n === 'object') {
-      out.push(n);
+      if ('availability' in n) out.push(n);
       Object.values(n).forEach(walk);
     }
   };
@@ -19,7 +19,6 @@ function ldObjects(html) {
 // Main product offer = first object with availability (carousels/related items come later).
 function fromJsonLd(html) {
   for (const o of ldObjects(html)) {
-    if (o.availability === undefined) continue;
     const a = String(o.availability).toLowerCase();
     let status;
     if (/outofstock|soldout|discontinued/.test(a)) status = 'out_of_stock';
@@ -41,9 +40,10 @@ export function classify(html, store = {}) {
     .replace(/<[^>]+>/g, ' ')
     .toLowerCase();
   if (BLOCK.some((b) => text.includes(b))) return none;
-  const has = (list = []) => list.some((m) => text.includes(m.toLowerCase()));
-  if (has(store.outOfStock)) return { status: 'out_of_stock', price: null };
-  if (has(store.inStock)) return { status: 'in_stock', price: null };
+  // outOfStock checked first: no false alarms
+  for (const [status, list = []] of [['out_of_stock', store.outOfStock], ['in_stock', store.inStock]]) {
+    if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null };
+  }
   return none;
 }
 
@@ -54,6 +54,9 @@ export async function fetchPage(browser, url) {
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
   });
   try {
+    // only HTML is needed: skip images/fonts/media
+    await ctx.route('**/*', (r) =>
+      ['image', 'font', 'media'].includes(r.request().resourceType()) ? r.abort() : r.continue());
     const page = await ctx.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForTimeout(3000);
