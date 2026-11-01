@@ -42,7 +42,8 @@ export default [
     url: 'https://geizhals.de/sony-playstation-5-pro-2tb-weiss-a3298140.html',
     inStock: ['sofort lieferbar', 'auf lager'], outOfStock: ['keine angebote'],
     note: 'Aggregator; shows offers incl. marketplace sellers at inflated prices; markers guessed' },
-  { id: 'galaxus', name: 'Galaxus', priority: 5,
+  { id: 'galaxus', disabled: true, // connection refused for automated checks (verified 2026-11-01)
+    name: 'Galaxus', priority: 5,
     url: 'https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254',
     inStock: ['in den warenkorb'], outOfStock: ['momentan nicht an lager', 'nicht lieferbar', 'ausverkauft'],
     note: 'Swiss retailer, trusted in DE; URL from search, markers unverified' },

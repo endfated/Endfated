@@ -27,4 +27,6 @@ Ohne `NTFY_TOPIC` werden Pushes nur geloggt. Ist `HTTPS_PROXY` gesetzt, nutzt Ch
 
 - **Preisgrenze:** Pushes gibt es nur bis `MAX_PRICE` (Standard 1000 €), damit Scalper-/Marketplace-Angebote nicht nerven. Anpassbar als Env-Variable im Workflow.
 - **Keine Fehlalarme:** Blockierte Seiten (Captcha, Fehler) zählen als „unbekannt“, nie als „verfügbar“. Ist ein Shop 48 Läufe (~1 Tag) in Folge unbekannt, kommt eine leise Push-Meldung – dann URL/Marker in `src/stores.js` prüfen.
-- **Shop-URLs & Marker** (`src/stores.js`) stammen aus Web-Recherche und sind noch nicht live geprüft. Nach den ersten Läufen im Actions-Log (Tabelle) kontrollieren und ggf. anpassen.
+- **Aktive Shops (live geprüft 01.11.2026):** PlayStation Direct, MediaMarkt, Saturn, Alternate (über Produktdaten der Seite) und expert (kein Kaufen-Button = ausverkauft).
+- **Deaktiviert** (`disabled: true` in `src/stores.js`): Amazon, Otto, Euronics, Geizhals, Galaxus – sie blockieren automatische Abrufe (Bot-Schutz). Der Tracker umgeht solche Sperren bewusst nicht.
+- Das Actions-Log zeigt pro Lauf eine Tabelle mit Status, Grund und HTTP-Code jedes Shops.
