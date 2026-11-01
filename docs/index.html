@@ -60,7 +60,7 @@ async function load(){
         <span class="dot"></span>
         <div class="info">
           <div class="name">${esc(s.name)}</div>
-          <div class="lbl">${L[s.status]||'Unbekannt'}${s.price!=null?' · '+eur(s.price):''}</div>
+          <div class="lbl">${s.reason==='blocked'?'Blockiert (Bot-Schutz)':L[s.status]}${s.price!=null?' · '+eur(s.price):''}</div>
           <div class="meta">${s.lastInStockAt?'Zuletzt verfügbar '+ago(s.lastInStockAt):'Noch nie verfügbar gesehen'}</div>
           ${s.note?`<div class="meta">${esc(s.note)}</div>`:''}
         </div>

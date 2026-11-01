@@ -1,4 +1,9 @@
-const BLOCK = ['captcha', 'access denied', 'are you a robot', 'unusual traffic'];
+// bot-protection pages -> reported as 'blocked', never as a stock status
+const BLOCK = [
+  'captcha', 'access denied', 'are you a robot', 'unusual traffic', '403 forbidden',
+  'nur einen moment', 'just a moment', 'enable javascript and cookies',
+  'um mit dem einkauf fortzufahren',
+];
 
 function ldObjects(html) {
   const out = [];

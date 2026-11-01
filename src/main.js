@@ -24,7 +24,12 @@ async function checkStore(browser, s) {
   try {
     const { html, http, title } = await fetchPage(browser, s.url);
     const r = { ...classify(html, s), http, title: title.slice(0, 50) };
-    if (r.status === 'unknown') console.log(`[${s.id}] ${pageText(html).slice(0, 300)}`);
+    if (r.reason === 'no_signal') {
+      // diagnose: text around availability words, to tune markers
+      const t = pageText(html);
+      const hits = [...t.matchAll(/.{0,60}(verfügbar|lieferbar|vorrätig|warenkorb|ausverkauft).{0,60}/g)].slice(0, 8);
+      console.log(`[${s.id}] no_signal:\n  ${hits.map((m) => m[0]).join('\n  ') || t.slice(0, 300)}`);
+    }
     return r;
   } catch (e) {
     console.error(`${s.id}: ${e.message.split('\n')[0]}`);
@@ -59,7 +64,7 @@ stores.forEach((s, i) => {
   const streak = r.status === 'unknown' ? (o.unknownStreak || 0) + 1 : 0;
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
-    status: r.status, price: r.price,
+    status: r.status, reason: r.reason, price: r.price,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak,
     known: r.status === 'unknown' ? o.known || null : r.status,
