@@ -1,6 +1,13 @@
 # PS5 Pro Restock Tracker
 
-Prüft alle 30 Minuten per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, zeigt den Stand auf einer GitHub-Pages-Seite (`docs/index.html`) und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
+📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
+
+<!-- STATUS:START -->
+<!-- STATUS:END -->
+
+---
+
+Prüft alle 30 Minuten per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, aktualisiert die Status-Tabelle oben in dieser README und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
 
 Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstaben-Teilstrings; "ausverkauft"-Marker haben Vorrang. Captcha/Blockade-Seiten gelten als "unbekannt". Nach 48 unbekannten Läufen in Folge gibt es einen Hinweis-Push.
 
@@ -8,7 +15,7 @@ Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstab
 
 1. **ntfy-App** installieren (iOS/Android) und ein geheimes, schwer erratbares Topic abonnieren, z. B. `ps5pro-x7k2q9...`.
 2. Im Repo unter *Settings > Secrets and variables > Actions* das Secret `NTFY_TOPIC` mit diesem Topic anlegen.
-3. *Settings > Pages*: Branch `master`, Ordner `/docs`. (Private Repos brauchen dafür GitHub Pro.)
+3. (Optional) *Settings > Pages* mit Branch `master`, Ordner `/docs` zeigt zusätzlich `docs/index.html` als Webseite – nur bei öffentlichem Repo oder GitHub Pro.
 4. Tab *Actions > check > Run workflow* einmal manuell starten.
 
 ## Lokal

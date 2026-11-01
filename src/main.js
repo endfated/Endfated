@@ -3,6 +3,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import allStores from './stores.js';
 import { classify, fetchPage, pageText, httpReason } from './check.js';
 import { notify } from './notify.js';
+import { renderStatusMd, replaceStatus } from './readme.js';
 
 const stores = allStores.filter((s) => !s.disabled);
 
@@ -104,6 +105,8 @@ if (dry) {
 } else {
   await mkdir(new URL('../docs/', import.meta.url), { recursive: true });
   await writeFile(STATUS_FILE, JSON.stringify(status, null, 2) + '\n');
+  const README = new URL('../README.md', import.meta.url);
+  await writeFile(README, replaceStatus(await readFile(README, 'utf8'), renderStatusMd(status)));
   for (const p of pushes) {
     try { await notify(p); } catch (e) { console.error('notify failed:', e.message); }
   }
