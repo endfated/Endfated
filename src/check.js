@@ -25,26 +25,32 @@ function fromJsonLd(html) {
     else if (/instock|preorder|limitedavailability/.test(a)) status = 'in_stock';
     else continue;
     const p = parseFloat(String(o.price ?? o.lowPrice ?? '').replace(',', '.'));
-    return { status, price: Number.isFinite(p) ? p : null };
+    return { status, price: Number.isFinite(p) ? p : null, reason: 'jsonld' };
   }
   return null;
 }
 
-export function classify(html, store = {}) {
-  const none = { status: 'unknown', price: null };
-  if (typeof html !== 'string' || html.length < 300) return none;
-  const ld = fromJsonLd(html);
-  if (ld) return ld;
-  const text = html
+export function pageText(html) {
+  return html
     .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
     .toLowerCase();
-  if (BLOCK.some((b) => text.includes(b))) return none;
+}
+
+// reason: jsonld | marker | blocked | no_signal | short
+export function classify(html, store = {}) {
+  const none = (reason) => ({ status: 'unknown', price: null, reason });
+  if (typeof html !== 'string' || html.length < 300) return none('short');
+  const ld = fromJsonLd(html);
+  if (ld) return ld;
+  const text = pageText(html);
+  if (BLOCK.some((b) => text.includes(b))) return none('blocked');
   // outOfStock checked first: no false alarms
   for (const [status, list = []] of [['out_of_stock', store.outOfStock], ['in_stock', store.inStock]]) {
-    if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null };
+    if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null, reason: 'marker' };
   }
-  return none;
+  return none('no_signal');
 }
 
 export async function fetchPage(browser, url) {
@@ -58,9 +64,9 @@ export async function fetchPage(browser, url) {
     await ctx.route('**/*', (r) =>
       ['image', 'font', 'media'].includes(r.request().resourceType()) ? r.abort() : r.continue());
     const page = await ctx.newPage();
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    const res = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForTimeout(3000);
-    return await page.content();
+    return { html: await page.content(), http: res?.status() ?? null, title: await page.title() };
   } finally {
     await ctx.close();
   }

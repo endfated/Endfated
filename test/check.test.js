@@ -8,7 +8,7 @@ const ld = (o) => `<html><head><script type="application/ld+json">${JSON.stringi
 
 test('JSON-LD InStock + price', () => {
   const r = classify(ld({ '@type': 'Product', offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', price: '759.99' } }), store);
-  assert.deepEqual(r, { status: 'in_stock', price: 759.99 });
+  assert.deepEqual(r, { status: 'in_stock', price: 759.99, reason: 'jsonld' });
 });
 
 test('JSON-LD OutOfStock', () => {
@@ -33,7 +33,7 @@ test('marker: inStock only', () => {
 
 test('captcha -> unknown', () => {
   const html = `<html><body>${pad}<h1>Please solve this CAPTCHA</h1><button>In den Warenkorb</button></body></html>`;
-  assert.equal(classify(html, store).status, 'unknown');
+  assert.equal(classify(html, store).reason, 'blocked');
 });
 
 test('very short html -> unknown', () => {

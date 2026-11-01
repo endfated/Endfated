@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
         with:
-          node-version: 20
+          ref: master
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
           cache: npm
       - run: npm ci
       - id: pw
@@ -40,5 +42,5 @@ jobs:
           git add docs/status.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "status update"
-          git pull --rebase
+          git pull --rebase -X theirs
           git push

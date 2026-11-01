@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import stores from './stores.js';
-import { classify, fetchPage } from './check.js';
+import { classify, fetchPage, pageText } from './check.js';
 import { notify } from './notify.js';
 
 const STATUS_FILE = new URL('../docs/status.json', import.meta.url);
@@ -22,10 +22,13 @@ const old = Object.fromEntries((prev.stores || []).map((s) => [s.id, s]));
 
 async function checkStore(browser, s) {
   try {
-    return classify(await fetchPage(browser, s.url), s);
+    const { html, http, title } = await fetchPage(browser, s.url);
+    const r = { ...classify(html, s), http, title: title.slice(0, 50) };
+    if (r.status === 'unknown') console.log(`[${s.id}] ${pageText(html).slice(0, 300)}`);
+    return r;
   } catch (e) {
-    console.error(`${s.id}: ${e.message}`);
-    return { status: 'unknown', price: null };
+    console.error(`${s.id}: ${e.message.split('\n')[0]}`);
+    return { status: 'unknown', price: null, reason: 'error' };
   }
 }
 
@@ -85,7 +88,7 @@ stores.forEach((s, i) => {
 
 const status = { updatedAt: now, stores: out, history: history.slice(0, 200) };
 
-console.table(out.map(({ id, status, price, unknownStreak }) => ({ id, status, price, unknownStreak })));
+console.table(out.map(({ id, status, price }, i) => ({ id, status, price, reason: results[i].reason, http: results[i].http, title: results[i].title })));
 if (dry) {
   console.log(`${pushes.length} push(es) would be sent`);
 } else {
