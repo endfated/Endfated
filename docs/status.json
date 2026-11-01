@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:47:45.249Z",
+  "updatedAt": "2026-11-01T15:13:24.740Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -46,7 +46,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "URL from search; markers guessed, unverified",
-      "unknownStreak": 1,
+      "unknownStreak": 2,
       "known": null
     },
     {
@@ -58,7 +58,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "ASIN unverified (alt: B0FRYBZR91 CFI-7121, B0DM8SFRJV); check seller = Amazon; captcha likely",
-      "unknownStreak": 1,
+      "unknownStreak": 2,
       "known": null
     },
     {
@@ -70,7 +70,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "Marketplace-priced (~1389+ EUR), unverified markers; Otto also lists bundles",
-      "unknownStreak": 1,
+      "unknownStreak": 2,
       "known": null
     },
     {
@@ -94,7 +94,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "URL from search; markers guessed, unverified",
-      "unknownStreak": 1,
+      "unknownStreak": 2,
       "known": null
     },
     {
@@ -106,7 +106,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "Aggregator; shows offers incl. marketplace sellers at inflated prices; markers guessed",
-      "unknownStreak": 1,
+      "unknownStreak": 2,
       "known": null
     }
   ],
