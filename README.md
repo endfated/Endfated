@@ -32,8 +32,7 @@ Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstab
 
 1. **ntfy-App** installieren (iOS/Android) und ein geheimes, schwer erratbares Topic abonnieren, z. B. `ps5pro-x7k2q9...`.
 2. Im Repo unter *Settings > Secrets and variables > Actions* das Secret `NTFY_TOPIC` mit diesem Topic anlegen.
-3. (Optional) *Settings > Pages* mit Branch `master`, Ordner `/docs` zeigt zusätzlich `docs/index.html` als Webseite – nur bei öffentlichem Repo oder GitHub Pro.
-4. Tab *Actions > check > Run workflow* einmal manuell starten.
+3. Tab *Actions > check > Run workflow* einmal manuell starten.
 
 ## Lokal
 

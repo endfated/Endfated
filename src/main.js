@@ -27,7 +27,8 @@ async function checkStore(browser, s) {
   try {
     const { html, http, title } = await fetchPage(browser, s.url);
     const r = classify(html, s);
-    if (r.status === 'unknown' && httpReason(http)) r.reason = httpReason(http);
+    const hr = httpReason(http);
+    if (r.status === 'unknown' && hr) r.reason = hr;
     Object.assign(r, { http, title: title.slice(0, 50) });
     if (r.reason === 'no_signal') {
       // diagnose: text around availability words, to tune markers
@@ -99,7 +100,7 @@ stores.forEach((s, i) => {
 const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => ({ id, name, url }));
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
-console.table(out.map(({ id, status, price }, i) => ({ id, status, price, reason: results[i].reason, http: results[i].http, title: results[i].title })));
+console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
 if (dry) {
   console.log(`${pushes.length} push(es) would be sent`);
 } else {
