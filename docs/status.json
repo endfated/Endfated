@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-11-05T21:47:25.552Z",
+  "updatedAt": "2026-11-05T22:10:23.666Z",
   "stores": [
     {
       "id": "ps-direct",
       "name": "PlayStation Direct",
       "url": "https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb",
       "priority": 1,
-      "status": "out_of_stock",
-      "reason": "jsonld",
-      "price": 899.99,
+      "status": "unknown",
+      "reason": "error",
+      "price": null,
       "lastInStockAt": null,
       "note": "URL from search; page text \"Derzeit nicht vorrätig\" seen when OOS; max 1 per order; queue/bot protection likely",
-      "unknownStreak": 0,
+      "unknownStreak": 1,
       "known": "out_of_stock"
     },
     {
@@ -95,6 +95,14 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-05T22:10:23.666Z",
+      "id": "ps-direct",
+      "name": "PlayStation Direct",
+      "from": "out_of_stock",
+      "to": "unknown",
+      "price": null
+    },
     {
       "at": "2026-11-05T21:47:25.552Z",
       "id": "mediamarkt",
@@ -1683,14 +1691,6 @@
       "at": "2026-11-05T13:24:49.736Z",
       "id": "saturn",
       "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-05T13:23:49.805Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
       "from": "in_stock",
       "to": "out_of_stock",
       "price": 899.99
