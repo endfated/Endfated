@@ -101,10 +101,10 @@ const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => 
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
 console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
-// with 5-min triggers: only commit on a real change, else at most every 30 min (keeps git history small)
+// checks run every minute: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
 const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason]));
 const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
-const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 30 * 60 * 1000;
+const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 2 * 60 * 1000;
 if (dry) {
   console.log(`${pushes.length} push(es) would be sent`);
 } else if (!changed && !stale) {

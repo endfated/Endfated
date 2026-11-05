@@ -40,7 +40,7 @@ Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstab
 
 Danach läuft alles allein: Jeder Lauf prüft ~5½ Stunden lang jede Minute und startet dann selbst den nächsten. Der GitHub-Zeitplan (alle 2 h) startet die Kette neu, falls sie einmal abreißt. Das geht nur kostenlos, weil das Repo öffentlich ist (private Repos: 2.000 Actions-Minuten/Monat).
 
-Ohne Änderung wird der Status höchstens alle 30 Minuten neu geschrieben ("Zuletzt geprüft" kann also bis zu 30 Min alt sein); geprüft wird trotzdem bei jedem Lauf, und ein Restock wird sofort gepusht.
+Ohne Änderung wird der Status alle 2 Minuten neu geschrieben ("Zuletzt geprüft" ist also höchstens ~2 Min alt); geprüft wird trotzdem bei jedem Lauf, und ein Restock wird sofort gepusht.
 
 ## Lokal
 
