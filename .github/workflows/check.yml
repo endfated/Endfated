@@ -1,18 +1,24 @@
 name: check
+# Each run loops for ~5.5 h, checking every 5 min, then dispatches its successor
+# (workflow_dispatch via GITHUB_TOKEN is allowed to start a new run).
+# The schedule is only a backup that restarts the chain if it ever breaks.
 on:
   schedule:
-    # backup only: GitHub runs this every few hours at best. Main trigger = cron-job.org every 5 min (README)
-    - cron: '7,37 * * * *'
+    - cron: '7 */2 * * *'
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: ps5-check
   cancel-in-progress: false
+env:
+  INTERVAL: 300   # seconds between checks
+  LOOP_FOR: 19800 # 5.5 h, job limit is 6 h
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v5
         with:
@@ -29,15 +35,27 @@ jobs:
           path: ~/.cache/ms-playwright
           key: pw-${{ steps.pw.outputs.v }}
       - run: npx playwright install --with-deps chromium # browser download skipped on cache hit
-      - run: npm run check
+      - name: Check loop
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-      - name: Commit status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/status.json README.md
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "status update"
-          git pull --rebase -X theirs
-          git push
+          end=$((SECONDS + LOOP_FOR))
+          while [ $SECONDS -lt $end ]; do
+            start=$SECONDS
+            echo "::group::check $(date -u +%H:%M)"
+            npm run check || echo "check failed, retry next round"
+            git add docs/status.json README.md
+            if ! git diff --cached --quiet; then
+              git commit -q -m "status update"
+              git pull -q --rebase -X theirs origin master && git push -q || echo "push failed, retry next round"
+            fi
+            echo "::endgroup::"
+            sleep $(( INTERVAL - (SECONDS - start) > 0 ? INTERVAL - (SECONDS - start) : 1 ))
+          done
+      - name: Start next run
+        if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run check.yml --ref master

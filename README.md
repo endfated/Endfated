@@ -37,18 +37,8 @@ Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstab
 1. **ntfy-App** installieren (iOS/Android) und ein geheimes, schwer erratbares Topic abonnieren, z. B. `ps5pro-x7k2q9...`.
 2. Im Repo unter *Settings > Secrets and variables > Actions* das Secret `NTFY_TOPIC` mit diesem Topic anlegen.
 3. Tab *Actions > check > Run workflow* einmal manuell starten.
-4. **Alle 5 Minuten prüfen** (GitHubs eigener Zeitplan läuft nur alle paar Stunden):
-   1. Repo öffentlich machen: *Settings > General > Danger Zone > Change visibility > Public* (dann sind die Actions-Minuten gratis; das ntfy-Topic bleibt als Secret geheim).
-   2. Token anlegen: GitHub > *Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token*. Name `cron-job`, Ablauf z. B. 1 Jahr, *Only select repositories* → `endfated/Endfated`, *Permissions > Actions: Read and write*. Token kopieren.
-   3. Auf [cron-job.org](https://cron-job.org) kostenlos registrieren > *Create cronjob*:
-      - URL: `https://api.github.com/repos/endfated/Endfated/actions/workflows/check.yml/dispatches`
-      - Zeitplan: *Every 5 minutes*
-      - Reiter *Advanced*: Request method `POST`, Request body `{"ref":"master"}`, Headers:
-        - `Authorization` = `Bearer DEIN_TOKEN`
-        - `Accept` = `application/vnd.github+json`
-        - `Content-Type` = `application/json`
-      - *Notify on failure* anlassen (Mail, wenn der Token abläuft oder GitHub ablehnt).
-      - Speichern, *Test run* → Antwort muss `204` sein; unter *Actions* erscheint ein neuer Lauf.
+
+Danach läuft alles allein: Jeder Lauf prüft ~5½ Stunden lang alle 5 Minuten und startet dann selbst den nächsten. Der GitHub-Zeitplan (alle 2 h) startet die Kette neu, falls sie einmal abreißt. Das geht nur kostenlos, weil das Repo öffentlich ist (private Repos: 2.000 Actions-Minuten/Monat).
 
 Ohne Änderung wird der Status höchstens alle 30 Minuten neu geschrieben ("Zuletzt geprüft" kann also bis zu 30 Min alt sein); geprüft wird trotzdem bei jedem Lauf, und ein Restock wird sofort gepusht.
 
