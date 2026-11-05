@@ -3,15 +3,13 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 05.11.26, 20:24 Uhr
-
-> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**
+**Zuletzt geprüft:** 05.11.26, 20:26 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** | 899,99 € | 05.11.26, 20:24 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** | 899,99 € | 05.11.26, 20:24 |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 05.11.26, 20:24 |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 05.11.26, 20:24 |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
@@ -19,11 +17,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 05.11.26, 20:26: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
+- 05.11.26, 20:26: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft
 - 05.11.26, 20:24: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar**
 - 05.11.26, 20:23: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar**
 - 05.11.26, 20:16: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
-- 05.11.26, 20:15: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar**
-- 05.11.26, 20:14: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
 
 </details>
 <!-- STATUS:END -->
