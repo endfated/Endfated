@@ -1,5 +1,5 @@
 name: check
-# Each run loops for ~5.5 h, checking every 5 min, then dispatches its successor
+# Each run loops for ~5.5 h, checking every minute, then dispatches its successor
 # (workflow_dispatch via GITHUB_TOKEN is allowed to start a new run).
 # The schedule is only a backup that restarts the chain if it ever breaks.
 on:
@@ -17,7 +17,7 @@ concurrency:
   group: ps5-check
   cancel-in-progress: false
 env:
-  INTERVAL: 300   # seconds between checks
+  INTERVAL: 60    # seconds between checks (one check takes ~15 s)
   LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
 jobs:
   check:
