@@ -101,8 +101,14 @@ const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => 
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
 console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
+// with 5-min triggers: only commit on a real change, else at most every 30 min (keeps git history small)
+const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason]));
+const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
+const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 30 * 60 * 1000;
 if (dry) {
   console.log(`${pushes.length} push(es) would be sent`);
+} else if (!changed && !stale) {
+  console.log('no change, status file left as is');
 } else {
   await mkdir(new URL('../docs/', import.meta.url), { recursive: true });
   await writeFile(STATUS_FILE, JSON.stringify(status, null, 2) + '\n');

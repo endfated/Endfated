@@ -1,7 +1,8 @@
 name: check
 on:
   schedule:
-    - cron: '7,37 * * * *' # off the :00/:30 peak, GitHub delays those
+    # backup only: GitHub runs this every few hours at best. Main trigger = cron-job.org every 5 min (README)
+    - cron: '7,37 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
