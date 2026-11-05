@@ -1,6 +1,6 @@
 name: check
-# Each run loops for ~5.5 h, checking every minute, then dispatches its successor
-# (workflow_dispatch via GITHUB_TOKEN is allowed to start a new run).
+# Each run loops for ~5.5 h, checking every minute. At its start it queues its successor
+# (workflow_dispatch via GITHUB_TOKEN is allowed to start a new run), so there is no gap.
 # The schedule is only a backup that restarts the chain if it ever breaks.
 on:
   schedule:
@@ -24,6 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
+      # queue the successor right away: it waits (concurrency group) and starts the moment this run ends,
+      # however it ends (done, failed, timed out, cancelled). Only one pending run is ever kept.
+      - name: Queue next run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run check.yml --repo ${{ github.repository }} --ref master
       - uses: actions/checkout@v5
         with:
           ref: master
@@ -32,13 +38,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - id: pw
-        run: echo "v=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: pw-${{ steps.pw.outputs.v }}
-      - run: npx playwright install --with-deps chromium # browser download skipped on cache hit
+      # use the Chrome preinstalled on the runner: no download, no apt (apt mirrors sometimes hang for minutes)
+      - name: Browser
+        timeout-minutes: 5
+        run: |
+          if [ -x /usr/bin/google-chrome ]; then echo "CHROMIUM_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"
+          else npx playwright install --with-deps chromium; fi
       - name: Check loop
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
@@ -49,7 +54,7 @@ jobs:
           while [ $SECONDS -lt $end ]; do
             start=$SECONDS
             echo "::group::check $(date -u +%H:%M)"
-            npm run check || echo "check failed, retry next round"
+            timeout 150 npm run check || echo "check failed or hung, retry next round"
             git add docs/status.json README.md
             if ! git diff --cached --quiet; then
               git commit -q -m "status update"
@@ -58,8 +63,3 @@ jobs:
             echo "::endgroup::"
             sleep $(( INTERVAL - (SECONDS - start) > 0 ? INTERVAL - (SECONDS - start) : 1 ))
           done
-      - name: Start next run
-        if: ${{ !cancelled() }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run check.yml --ref master
