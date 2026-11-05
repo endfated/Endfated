@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: '7 */2 * * *'
   workflow_dispatch:
+    inputs:
+      loop_for:
+        description: 'Loop duration in seconds (test only)'
+        default: '19800'
 permissions:
   contents: write
   actions: write
@@ -14,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 env:
   INTERVAL: 300   # seconds between checks
-  LOOP_FOR: 19800 # 5.5 h, job limit is 6 h
+  LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
 jobs:
   check:
     runs-on: ubuntu-latest
