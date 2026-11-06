@@ -3,25 +3,25 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 06.11.26, 03:09 Uhr
+**Zuletzt geprüft:** 06.11.26, 03:10 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
 | [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 06.11.26, 02:53 |
 | [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 06.11.26, 02:53 |
-| [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | ⚪ Shop-Fehler | – | noch nie |
+| [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
 Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.amazon.de/dp/B0DHSV68YZ) · [Otto](https://www.otto.de/p/playstation-5-playstation-5-pro-2tb-playstation-5-pro-konsole-C1914416905/) · [Euronics](https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-pro-konsole-4065465034645) · [Geizhals (aggregator)](https://geizhals.de/sony-playstation-5-pro-2tb-weiss-a3298140.html) · [Galaxus](https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254)
 
 <details><summary>Letzte Änderungen</summary>
 
+- 06.11.26, 03:10: expert ⚪ Unbekannt → 🔴 Ausverkauft
 - 06.11.26, 03:09: expert 🔴 Ausverkauft → ⚪ Unbekannt
 - 06.11.26, 03:08: expert ⚪ Unbekannt → 🔴 Ausverkauft
 - 06.11.26, 03:08: expert 🔴 Ausverkauft → ⚪ Unbekannt
 - 06.11.26, 02:55: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
-- 06.11.26, 02:55: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft
 
 </details>
 <!-- STATUS:END -->
