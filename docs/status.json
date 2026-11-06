@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T04:24:08.177Z",
+  "updatedAt": "2026-11-06T04:26:33.133Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -45,12 +45,12 @@
       "name": "expert",
       "url": "https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html",
       "priority": 4,
-      "status": "out_of_stock",
-      "reason": "no_buy_button",
+      "status": "unknown",
+      "reason": "error",
       "price": null,
       "lastInStockAt": null,
       "note": "No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)",
-      "unknownStreak": 0,
+      "unknownStreak": 1,
       "known": "out_of_stock"
     },
     {
@@ -95,6 +95,14 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-06T04:26:33.133Z",
+      "id": "expert",
+      "name": "expert",
+      "from": "out_of_stock",
+      "to": "unknown",
+      "price": null
+    },
     {
       "at": "2026-11-06T04:07:52.602Z",
       "id": "saturn",
@@ -1685,14 +1693,6 @@
       "name": "Saturn",
       "from": "in_stock",
       "to": "out_of_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-05T16:25:52.479Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
       "price": 899.99
     }
   ]
