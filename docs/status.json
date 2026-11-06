@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T17:46:32.326Z",
+  "updatedAt": "2026-11-06T17:48:30.014Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -32,13 +32,13 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "price": 899.99,
-      "lastInStockAt": "2026-11-06T17:38:29.715Z",
+      "lastInStockAt": "2026-11-06T17:48:30.014Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock"
+      "known": "in_stock"
     },
     {
       "id": "expert",
@@ -95,6 +95,14 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-06T17:48:30.014Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99
+    },
     {
       "at": "2026-11-06T17:39:29.167Z",
       "id": "saturn",
@@ -1683,14 +1691,6 @@
       "at": "2026-11-06T01:43:51.010Z",
       "id": "saturn",
       "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-06T01:42:51.482Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
       "from": "out_of_stock",
       "to": "in_stock",
       "price": 899.99
