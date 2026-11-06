@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T15:05:20.144Z",
+  "updatedAt": "2026-11-06T15:07:21.600Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -19,26 +19,26 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "price": 899.99,
-      "lastInStockAt": "2026-11-06T15:02:19.287Z",
+      "lastInStockAt": "2026-11-06T15:07:21.600Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock"
+      "known": "in_stock"
     },
     {
       "id": "saturn",
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "price": 899.99,
-      "lastInStockAt": "2026-11-06T15:04:18.860Z",
+      "lastInStockAt": "2026-11-06T15:07:21.600Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock"
+      "known": "in_stock"
     },
     {
       "id": "expert",
@@ -95,6 +95,22 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-06T15:07:21.600Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99
+    },
+    {
+      "at": "2026-11-06T15:07:21.600Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99
+    },
     {
       "at": "2026-11-06T15:05:20.144Z",
       "id": "saturn",
@@ -1677,22 +1693,6 @@
       "name": "Saturn",
       "from": "in_stock",
       "to": "out_of_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-05T21:13:24.075Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-05T21:13:24.075Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
       "price": 899.99
     }
   ]
