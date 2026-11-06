@@ -30,7 +30,7 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 ---
 
-Prüft alle 30 Minuten per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, aktualisiert die Status-Tabelle oben in dieser README und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
+Prüft jede Minute per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, aktualisiert die Status-Tabelle oben in dieser README und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
 
 Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstaben-Teilstrings; "ausverkauft"-Marker haben Vorrang. Captcha/Blockade-Seiten gelten als "unbekannt". Nach 48 unbekannten Läufen in Folge gibt es einen Hinweis-Push.
 
@@ -59,6 +59,7 @@ Ohne `NTFY_TOPIC` werden Pushes nur geloggt. Ist `HTTPS_PROXY` gesetzt, nutzt Ch
 ## Hinweise
 
 - **Preisgrenze:** Pushes gibt es nur bis `MAX_PRICE` (Standard 1000 €), damit Scalper-/Marketplace-Angebote nicht nerven. Anpassbar als Env-Variable im Workflow.
+- **Warenkorb-Check (MediaMarkt, Saturn):** Meldet die Seite „verfügbar“, legt der Tracker den Artikel in einer frischen Browser-Sitzung in den Warenkorb und prüft, ob dort „Zur Kasse“ möglich ist. Nur dann kommt der dringende Push („WIRKLICH bestellbar“). Verfügbar laut Seite, aber im Warenkorb nicht lieferbar = Phantom-Bestand: kein Push, nur Tabelle und Verlauf (`NOTIFY_PAGE_ONLY=1` schaltet dafür leise Pushes ein). Ist der Warenkorb-Check blockiert oder unklar, kommt ein Push mit „selbst prüfen“. Kein Login, kein Kauf, keine Umgehung von Bot-Schutz.
 - **Keine Fehlalarme:** Blockierte Seiten (Captcha, Fehler) zählen als „unbekannt“, nie als „verfügbar“. Ist ein Shop 48 Läufe (~1 Tag) in Folge unbekannt, kommt eine leise Push-Meldung – dann URL/Marker in `src/stores.js` prüfen.
 - **Aktive Shops (live geprüft 01.11.2026):** PlayStation Direct, MediaMarkt, Saturn, Alternate (über Produktdaten der Seite) und expert (kein Kaufen-Button = ausverkauft).
 - **Deaktiviert** (`disabled: true` in `src/stores.js`): Amazon, Otto, Euronics, Geizhals, Galaxus – sie blockieren automatische Abrufe (Bot-Schutz). Der Tracker umgeht solche Sperren bewusst nicht.
