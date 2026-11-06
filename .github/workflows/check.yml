@@ -1,10 +1,8 @@
 name: check
-# Each run loops for ~5.5 h, checking every minute. At its start it queues its successor
-# (workflow_dispatch via GITHUB_TOKEN is allowed to start a new run), so there is no gap.
-# The schedule is only a backup that restarts the chain if it ever breaks.
+# Each run loops for ~5.5 h, checking every minute, and keeps a successor waiting in the queue
+# (workflow_dispatch via GITHUB_TOKEN may start new runs), so the next run starts the moment this one ends.
+# watchdog.yml restarts the chain if it ever breaks completely.
 on:
-  schedule:
-    - cron: '7 */2 * * *'
   workflow_dispatch:
     inputs:
       loop_for:
@@ -24,12 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
-      # queue the successor right away: it waits (concurrency group) and starts the moment this run ends,
-      # however it ends (done, failed, timed out, cancelled). Only one pending run is ever kept.
-      - name: Queue next run
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run check.yml --repo ${{ github.repository }} --ref master
       - uses: actions/checkout@v5
         with:
           ref: master
@@ -47,12 +39,15 @@ jobs:
       - name: Check loop
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          end=$((SECONDS + LOOP_FOR))
+          end=$((SECONDS + LOOP_FOR)) n=0
           while [ $SECONDS -lt $end ]; do
             start=$SECONDS
+            # keep a successor queued; re-checked every 5 rounds so a GitHub API hiccup can't break the chain
+            [ $((n++ % 5)) = 0 ] && scripts/ensure-run.sh pending queued
             echo "::group::check $(date -u +%H:%M)"
             timeout 150 npm run check || echo "check failed or hung, retry next round"
             git add docs/status.json README.md
