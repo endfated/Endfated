@@ -3,11 +3,11 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 06.11.26, 02:40 Uhr
+**Zuletzt geprüft:** 06.11.26, 02:41 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
-| [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
+| [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | ⚪ Shop-Fehler | – | noch nie |
 | [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 06.11.26, 00:53 |
 | [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 06.11.26, 00:51 |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
@@ -17,11 +17,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 06.11.26, 02:41: PlayStation Direct 🔴 Ausverkauft → ⚪ Unbekannt
 - 06.11.26, 00:54: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft
 - 06.11.26, 00:53: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
 - 06.11.26, 00:51: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar**
 - 06.11.26, 00:51: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar**
-- 06.11.26, 00:50: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft
 
 </details>
 <!-- STATUS:END -->
