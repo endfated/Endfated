@@ -17,7 +17,17 @@ concurrency:
 env:
   INTERVAL: 60    # seconds between checks (one check takes ~15 s)
   LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
+  GH_TOKEN: ${{ github.token }}
 jobs:
+  # queue the successor in parallel, independent of setup; it starts the moment this run ends
+  queue-next:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: scripts
+      - run: bash scripts/ensure-run.sh successor
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 350
@@ -25,10 +35,6 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: master
-      # queue the successor before anything else can fail; it starts the moment this run ends
-      - run: bash scripts/ensure-run.sh queued pending waiting requested
-        env:
-          GH_TOKEN: ${{ github.token }}
       - uses: actions/setup-node@v5
         with:
           node-version: 22
@@ -43,15 +49,14 @@ jobs:
       - name: Check loop
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           end=$((SECONDS + LOOP_FOR)) n=0
           while [ $SECONDS -lt $end ]; do
             start=$SECONDS
-            # re-check every 5 rounds that a successor is queued (in background: never blocks or stops the loop)
-            if [ $((++n % 5)) = 0 ]; then bash scripts/ensure-run.sh queued pending waiting requested & fi
+            # every 30 rounds re-check that a successor is queued (background: never blocks or stops the loop)
+            if [ $((++n % 30)) = 0 ]; then bash scripts/ensure-run.sh successor & fi
             echo "::group::check $(date -u +%H:%M)"
             timeout 150 npm run check || echo "check failed or hung, retry next round"
             git add docs/status.json README.md
