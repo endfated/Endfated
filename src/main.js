@@ -102,11 +102,12 @@ stores.forEach((s, i) => {
   if (!r.cart && cart) r.cart = { result: cart, detail: cartDetail }; // decidePush sees the effective cart state
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
-    status: r.status, reason: r.reason, via: r.via ?? null, price: r.price, capped: !!r.capped,
+    status: r.status, reason: r.reason, via: r.via ?? null, capped: !!r.capped,
+    price: r.status === 'unknown' ? o.price ?? null : r.price, // a blocked check keeps the last price (no commit churn)
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak, known,
     cart, cartDetail, cartCheckedAt: r.cart && !carry ? now : carry ? o.cartCheckedAt ?? null : null,
-    verify: !!s.verify, lastCartOkAt: cart === 'ok' ? now : o.lastCartOkAt || null,
+    verify: !!s.verify, lastCartOkAt: r.cart && !carry && cart === 'ok' ? now : o.lastCartOkAt || null,
     // streak starts: one push per streak and kind, retried until delivered (policy.js)
     inStockSince: known === 'in_stock' ? (o.known === 'in_stock' && o.inStockSince) || now : null,
     cartOkSince: cart === 'ok' ? (o.cart === 'ok' && o.cartOkSince) || now : null,
