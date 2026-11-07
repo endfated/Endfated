@@ -9,10 +9,13 @@ const LABEL = { in_stock: '🟢 **Verfügbar**', out_of_stock: '🔴 Ausverkauft
 const CART = { ok: 'ok', fail: 'nein', blocked: 'blockiert', unknown: 'unklar' };
 const last = (iso) => (iso ? time(iso) : 'noch nie');
 
+// in stock, and either no cart check for this shop or the cart check passed
+const buyable = (s) => s.status === 'in_stock' && (!s.cart || s.cart === 'ok');
+
 function label(s) {
   if (s.status === 'unknown' && REASON[s.reason]) return `⚪ ${REASON[s.reason]}`;
   if (s.status !== 'in_stock' || !s.cart) return LABEL[s.status];
-  if (s.cartOk) return '🟢 **Bestellbar** (Warenkorb OK)';
+  if (buyable(s)) return '🟢 **Bestellbar** (Warenkorb OK)';
   return s.cart === 'fail' ? '🟡 Seite: verfügbar, Warenkorb: nein' : '🟢 **Verfügbar** (ungeprüft)';
 }
 
@@ -20,7 +23,7 @@ export function renderStatusMd({ updatedAt, stores = [], disabled = [], history 
   const rows = [...stores].sort((a, b) => a.priority - b.priority).map((s) =>
     `| [${s.name}](${s.url}) | ${label(s)} | ${eur(s.price)} | ${last(s.lastInStockAt)}${s.verify ? `<br>🛒 ${last(s.lastCartOkAt)}` : ''} |`);
   const lines = [`**Zuletzt geprüft:** ${time(updatedAt)} Uhr`, ''];
-  if (stores.some((s) => s.status === 'in_stock' && (s.cartOk || !s.cart))) lines.push('> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**', '');
+  if (stores.some(buyable)) lines.push('> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**', '');
   if (stores.length && stores.every((s) => s.status === 'unknown')) lines.push('> ⚠️ Kein Shop konnte geprüft werden.', '');
   lines.push('| Shop | Status | Preis | Zuletzt verfügbar |', '|---|---|---|---|', ...rows);
   if (stores.some((s) => s.verify)) lines.push('', '🛒 = zuletzt wirklich bestellbar (Artikel im Warenkorb, Kasse erreichbar)');
@@ -28,9 +31,9 @@ export function renderStatusMd({ updatedAt, stores = [], disabled = [], history 
   if (history.length) {
     lines.push('', '<details><summary>Letzte Änderungen</summary>', '');
     for (const h of history.slice(0, 5)) {
-      lines.push(h.from === h.to
-        ? `- ${time(h.at)}: ${h.name} Warenkorb: ${CART[h.cartFrom] ?? '–'} → ${CART[h.cart] ?? h.cart}`
-        : `- ${time(h.at)}: ${h.name} ${LABEL[h.from] ?? h.from} → ${LABEL[h.to] ?? h.to}${h.cart ? ` (Warenkorb: ${CART[h.cart] ?? h.cart})` : ''}`);
+      const status = h.from !== h.to ? ` ${LABEL[h.from] ?? h.from} → ${LABEL[h.to] ?? h.to}` : '';
+      const cart = h.cart ? ` · Warenkorb: ${h.cartFrom ? `${CART[h.cartFrom] ?? h.cartFrom} → ` : ''}${CART[h.cart] ?? h.cart}` : '';
+      lines.push(`- ${time(h.at)}: ${h.name}${status}${cart}`);
     }
     lines.push('', '</details>');
   }

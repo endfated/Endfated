@@ -33,7 +33,7 @@ test('cart labels, banner only for real availability, cart column and history', 
   const s = (name, extra) => ({ name, url: 'https://x', priority: 1, status: 'in_stock', price: 899.99, verify: true, ...extra });
   const md = renderStatusMd({
     updatedAt: '2026-11-01T15:00:00Z',
-    stores: [s('A', { cart: 'ok', cartOk: true, lastCartOkAt: '2026-11-01T15:00:00Z' }), s('B', { cart: 'fail', cartOk: false }), s('C', { cart: 'blocked', cartOk: false })],
+    stores: [s('A', { cart: 'ok', lastCartOkAt: '2026-11-01T15:00:00Z' }), s('B', { cart: 'fail' }), s('C', { cart: 'blocked' })],
     history: [
       { at: '2026-11-01T15:00:00Z', name: 'B', from: 'out_of_stock', to: 'in_stock', cart: 'fail' },
       { at: '2026-11-01T15:01:00Z', name: 'A', from: 'in_stock', to: 'in_stock', cartFrom: 'fail', cart: 'ok' },
@@ -43,8 +43,8 @@ test('cart labels, banner only for real availability, cart column and history', 
   assert.match(md, /🟡 Seite: verfügbar, Warenkorb: nein/);
   assert.match(md, /🟢 \*\*Verfügbar\*\* \(ungeprüft\)/);
   assert.match(md, /schnell sein/);
-  assert.match(md, /\(Warenkorb: nein\)/);
-  assert.match(md, /A Warenkorb: nein → ok/);
+  assert.match(md, /B 🔴 Ausverkauft → 🟢 \*\*Verfügbar\*\* · Warenkorb: nein/);
+  assert.match(md, /A · Warenkorb: nein → ok/);
   assert.match(md, /<br>🛒 01\.11\.26, 16:00/);
   assert.match(md, /<br>🛒 noch nie/);
   assert.match(md, /🛒 = zuletzt wirklich bestellbar/);

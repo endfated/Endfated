@@ -32,16 +32,13 @@ async function checkStore(browser, s) {
     const r = classify(html, s);
     const hr = httpReason(http);
     if (r.status === 'unknown' && hr) r.reason = hr;
+    r.capped = r.status === 'in_stock' && r.price > MAX_PRICE; // marketplace price: no cart check, no push, no state change
     Object.assign(r, { http, title: title.slice(0, 50) });
     if (r.reason === 'no_signal') {
       // diagnose: text around availability words, to tune markers
       const t = pageText(html);
       const hits = [...t.matchAll(/.{0,60}(verfügbar|lieferbar|vorrätig|warenkorb|ausverkauft).{0,60}/g)].slice(0, 8);
       console.log(`[${s.id}] no_signal:\n  ${hits.map((m) => m[0]).join('\n  ') || t.slice(0, 300)}`);
-    }
-    if (r.status === 'in_stock' && s.verify && !(r.price > MAX_PRICE)) {
-      r.cart = await verifyCart(browser, s);
-      console.log(`[${s.id}] cart=${r.cart.result} ${r.cart.detail}`);
     }
     return r;
   } catch (e) {
@@ -61,6 +58,13 @@ const worker = async () => {
   }
 };
 await Promise.all(Array.from({ length: 3 }, worker));
+// cart check for in-stock verify stores: in parallel, outside the worker pool
+await Promise.all(stores.map(async (s, i) => {
+  const r = results[i];
+  if (r.status !== 'in_stock' || !s.verify || r.capped) return;
+  r.cart = await verifyCart(browser, s);
+  console.log(`[${s.id}] cart=${r.cart.result} ${r.cart.detail}`);
+}));
 await browser.close();
 
 const now = new Date().toISOString();
@@ -72,25 +76,21 @@ stores.forEach((s, i) => {
   const r = results[i];
   const o = old[s.id] || {};
   const streak = r.status === 'unknown' ? (o.unknownStreak || 0) + 1 : 0;
-  const capped = r.status === 'in_stock' && r.price > MAX_PRICE; // marketplace price: no push, no state change
-  const ok = !capped && r.cart?.result === 'ok';
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
     status: r.status, reason: r.reason, price: r.price,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak,
-    known: r.status === 'unknown' || capped ? o.known || null : r.status,
-    cart: r.cart?.result ?? null, cartDetail: r.cart?.detail ?? null, cartOk: ok,
-    verify: !!s.verify, lastCartOkAt: ok ? now : o.lastCartOkAt || null, pushedAt: o.pushedAt || {},
+    known: r.status === 'unknown' || r.capped ? o.known || null : r.status,
+    cart: r.cart?.result ?? null, cartDetail: r.cart?.detail ?? null, verify: !!s.verify,
+    lastCartOkAt: r.cart?.result === 'ok' ? now : o.lastCartOkAt || null, pushedAt: o.pushedAt || {},
   };
   out.push(entry);
-  const from = o.status;
-  if (from && from !== r.status) {
-    history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price, cart: entry.cart });
-  } else if (entry.cart && entry.cart !== (o.cart ?? null)) {
-    history.unshift({ at: now, id: s.id, name: s.name, from: r.status, to: r.status, price: r.price, cartFrom: o.cart ?? null, cart: entry.cart });
+  const from = o.status ?? r.status, cartFrom = o.cart ?? null;
+  if (from !== r.status || cartFrom !== entry.cart) {
+    history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price, cartFrom, cart: entry.cart });
   }
-  const p = decidePush(s, r, o, now, MAX_PRICE, { pageOnly });
+  const p = decidePush(s, r, o, now, { pageOnly });
   if (p) {
     pushes.push(p);
     entry.pushedAt = { ...entry.pushedAt, [p.kind]: now };

@@ -37,6 +37,8 @@ function fromJsonLd(html) {
   return null;
 }
 
+export const findMarker = (text, markers) => markers.find((m) => text.includes(m));
+
 export function pageText(html) {
   return html
     .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
@@ -59,10 +61,10 @@ export function classify(html, store = {}) {
   const ld = fromJsonLd(html);
   if (ld) return ld;
   const text = pageText(html);
-  if (BLOCK.some((b) => text.includes(b))) return none('blocked');
+  if (findMarker(text, BLOCK)) return none('blocked');
   // outOfStock checked first: no false alarms
   for (const [status, list = []] of [['out_of_stock', store.outOfStock], ['in_stock', store.inStock]]) {
-    if (list.some((m) => text.includes(m.toLowerCase()))) return { status, price: null, reason: 'marker' };
+    if (findMarker(text, list.map((m) => m.toLowerCase()))) return { status, price: null, reason: 'marker' };
   }
   // shops that only show a buy button when in stock
   // only if this is clearly the product page (else a broken/changed page would hide as 'sold out')
