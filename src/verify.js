@@ -63,7 +63,7 @@ async function flow(page, store, pause) {
   const near = item ? t.slice(Math.max(0, t.indexOf(item) - 300), t.indexOf(item) + 300) : ''; // the line item, not pickup/express/footer text
   return scan(t, BLOCK, 'blocked')
     || scan(t, empty, 'unknown', 'Warenkorb leer: ')
-    || (!item && { result: 'unknown', detail: clip(`${await page.title()} | ${t.slice(0, 150)}`) })
+    || (!item && { result: 'unknown', detail: clip(`${page.url().replace(/^https?:\/\/[^/]+/, '')} | ${around(t, findMarker(t, ['warenkorb', 'anmelden', 'login']) ?? t.slice(0, 1))}`) }) // where did we land, what does it say
     || scan(near, list(store.cartFail, ITEM_FAIL), 'fail')
     || (findMarker(t, list(store.checkoutCta, CTA)) ? { result: 'ok', detail: around(t, item) } : { result: 'unknown', detail: clip(`kein Kassen-Button | ${around(t, item)}`) });
 }
