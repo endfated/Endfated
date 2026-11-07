@@ -18,7 +18,7 @@ export default [
     note: 'Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked' },
   { id: 'expert', name: 'expert', priority: 4,
     url: 'https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html',
-    inStock: ['in den warenkorb'], outOfStock: ['derzeit nicht verfügbar', 'nicht lieferbar'], missingBuyMeansOut: true, expectText: 'playstation®5 pro',
+    inStock: ['in den warenkorb'], outOfStock: ['derzeit nicht verfügbar', 'nicht lieferbar'], missingBuyMeansOut: true, expectText: 'playstation®5 pro', render: true, // buy box may be client-side: never judge the raw HTML
     note: 'No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)' },
   { id: 'amazon', disabled: true, // bot protection blocks automated checks (verified 2026-11-01)
     name: 'Amazon.de', priority: 5,

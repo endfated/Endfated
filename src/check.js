@@ -39,10 +39,15 @@ function fromJsonLd(html) {
 
 export const findMarker = (text, markers) => markers.find((m) => text.includes(m));
 
+const ENTITY = { amp: '&', nbsp: ' ', reg: '®', auml: 'ä', ouml: 'ö', uuml: 'ü', szlig: 'ß', euro: '€', quot: '"', apos: "'", lt: '<', gt: '>' };
+const decode = (t) => t.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) =>
+  e[0] !== '#' ? ENTITY[e.toLowerCase()] ?? m : String.fromCodePoint(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10)));
+
+// raw server HTML keeps entities (&uuml;, &nbsp;) that a rendered DOM has resolved: decode so markers match both
 export function pageText(html) {
-  return html
+  return decode(html
     .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
+    .replace(/<[^>]+>/g, ' '))
     .replace(/\s+/g, ' ')
     .toLowerCase();
 }

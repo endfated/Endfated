@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classify, httpReason } from '../src/check.js';
+import { classify, httpReason, pageText } from '../src/check.js';
 
 const store = { inStock: ['in den warenkorb'], outOfStock: ['nicht vorrätig'] };
 const pad = '<p>' + 'x '.repeat(200) + '</p>';
@@ -66,4 +66,12 @@ test('httpReason mapping', () => {
   assert.equal(httpReason(404), 'not_found');
   assert.equal(httpReason(503), 'error');
   assert.equal(httpReason(200), null);
+});
+
+test('pageText decodes entities so markers match raw server HTML', () => {
+  const html = `<html><body>${pad}<h1>PlayStation&reg;5 Pro</h1><p>899,99&nbsp;&euro; derzeit nicht verf&uuml;gbar &#x2013; Men&#252;</p></body></html>`;
+  const t = pageText(html);
+  assert.match(t, /playstation®5 pro/);
+  assert.match(t, /899,99 € derzeit nicht verfügbar – menü/);
+  assert.equal(classify(html, { ...store, outOfStock: ['derzeit nicht verfügbar'] }).status, 'out_of_stock');
 });

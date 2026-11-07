@@ -32,11 +32,13 @@ async function checkStore(browser, s) {
     // fast path: server-rendered HTML; full render when the shop challenges plain requests or the HTML gives no stock signal
     let via = 'html', html = '', http = null, title = '', r = { status: 'unknown' };
     if (!s.render) {
-      ({ html, http, title } = await fetchHtml(browser, s.url));
+      ({ html, http, title } = await fetchHtml(browser, s.url).catch((e) => ({ html: '', http: null, title: e.message.split('\n')[0] })));
       r = classify(html, s);
-      if (r.status === 'unknown') console.log(`[${s.id}] html fetch: http=${http} ${r.reason} "${title.slice(0, 60)}" -> rendering`);
+      if (r.status === 'unknown') console.log(`[${s.id}] html fetch: http=${http} ${r.reason} "${title.slice(0, 60)}"`);
     }
-    if (r.status === 'unknown') {
+    // a challenge/429 means back off this round, not hit the shop a second time with a full render
+    const pushedBack = r.reason === 'blocked' || [403, 429].includes(http);
+    if (r.status === 'unknown' && !pushedBack) {
       via = 'browser';
       ({ html, http, title } = await fetchPage(browser, s.url, (h) => classify(h, s).status !== 'unknown'));
       r = classify(html, s);
@@ -68,17 +70,20 @@ const worker = async () => {
     results[i] = await checkStore(browser, stores[i]);
   }
 };
-await Promise.all(Array.from({ length: 5 }, worker)); // all shops at once: one check takes ~8 s
-// cart check for in-stock verify stores: in parallel, outside the worker pool
+await Promise.all(Array.from({ length: 5 }, worker)); // all shops at once: one check takes ~3 s
+const now = new Date().toISOString();
+// cart check for in-stock verify stores: in parallel, outside the worker pool. Re-verified at most every RECHECK_CART
+// seconds while the page stays in stock (one add-to-cart per round would look like a bot); in between the last result carries over.
+const RECHECK_CART = 60 * 1000;
 await Promise.all(stores.map(async (s, i) => {
-  const r = results[i];
+  const r = results[i], o = old[s.id] || {};
   if (r.status !== 'in_stock' || !s.verify || r.capped) return;
+  if (o.cart && o.cartCheckedAt && Date.parse(now) - Date.parse(o.cartCheckedAt) < RECHECK_CART) return;
   r.cart = await verifyCart(browser, s);
   console.log(`[${s.id}] cart=${r.cart.result} ${r.cart.detail}`);
 }));
 await browser.close();
 
-const now = new Date().toISOString();
 // blocked and unknown both mean "unverified": no history row or commit for flapping between them
 const bucket = (c) => (c === 'blocked' || c === 'unknown' ? 'unverified' : c);
 const history = [...(prev.history || [])];
@@ -90,13 +95,18 @@ stores.forEach((s, i) => {
   const o = old[s.id] || {};
   const streak = r.status === 'unknown' ? (o.unknownStreak || 0) + 1 : 0;
   const known = r.status === 'unknown' || r.capped ? o.known || null : r.status;
-  const cart = r.cart?.result ?? null;
+  // cart result: fresh from this round, else carried over while the known status stays in stock (throttled or blocked round)
+  const carry = !r.cart && known === 'in_stock' && !r.capped;
+  const cart = r.cart?.result ?? (carry ? o.cart ?? null : null);
+  const cartDetail = r.cart?.detail ?? (carry ? o.cartDetail ?? null : null);
+  if (!r.cart && cart) r.cart = { result: cart, detail: cartDetail }; // decidePush sees the effective cart state
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
     status: r.status, reason: r.reason, via: r.via ?? null, price: r.price, capped: !!r.capped,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak, known,
-    cart, cartDetail: r.cart?.detail ?? null, verify: !!s.verify, lastCartOkAt: cart === 'ok' ? now : o.lastCartOkAt || null,
+    cart, cartDetail, cartCheckedAt: r.cart && !carry ? now : carry ? o.cartCheckedAt ?? null : null,
+    verify: !!s.verify, lastCartOkAt: cart === 'ok' ? now : o.lastCartOkAt || null,
     // streak starts: one push per streak and kind, retried until delivered (policy.js)
     inStockSince: known === 'in_stock' ? (o.known === 'in_stock' && o.inStockSince) || now : null,
     cartOkSince: cart === 'ok' ? (o.cart === 'ok' && o.cartOkSince) || now : null,
