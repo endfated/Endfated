@@ -1,0 +1,15 @@
+name: netdiag
+on: workflow_dispatch
+jobs:
+  netdiag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: echo "CHROMIUM_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"
+      - run: node scripts/netdiag.js
