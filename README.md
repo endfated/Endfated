@@ -3,13 +3,13 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 07.11.26, 18:06 Uhr
+**Zuletzt geprüft:** 07.11.26, 18:07 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 07.11.26, 18:03<br>🛒 07.11.26, 18:01 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 07.11.26, 18:05<br>🛒 noch nie |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 07.11.26, 18:07<br>🛒 07.11.26, 18:01 |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 07.11.26, 18:07<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
@@ -19,11 +19,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 07.11.26, 18:07: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
+- 07.11.26, 18:07: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
 - 07.11.26, 18:06: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: blockiert → –
 - 07.11.26, 18:05: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: blockiert
 - 07.11.26, 18:05: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: unklar → –
-- 07.11.26, 18:04: Saturn · Warenkorb: nein → unklar
-- 07.11.26, 18:04: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: nein → –
 
 </details>
 <!-- STATUS:END -->
