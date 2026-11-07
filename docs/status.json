@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T18:59:43.626Z",
+  "updatedAt": "2026-11-07T19:00:02.355Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,7 +29,7 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -37,13 +37,13 @@
       "lastInStockAt": "2026-11-07T18:59:43.626Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
-      "cartCheckedAt": "2026-11-07T18:59:43.626Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": "2026-11-07T18:58:15.572Z",
-      "inStockSince": "2026-11-07T18:58:15.572Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-07T18:58:15.572Z"
@@ -54,18 +54,18 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "unknown",
-      "reason": "blocked",
+      "status": "in_stock",
+      "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-07T18:58:44.827Z",
+      "lastInStockAt": "2026-11-07T19:00:02.355Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
-      "unknownStreak": 1,
+      "unknownStreak": 0,
       "known": "in_stock",
       "cart": "unknown",
       "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
-      "cartCheckedAt": "2026-11-07T18:58:44.827Z",
+      "cartCheckedAt": "2026-11-07T19:00:02.355Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-07T18:58:44.827Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T19:00:02.355Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": null
+    },
     {
       "at": "2026-11-07T18:59:43.626Z",
       "id": "mediamarkt",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "unknown"
-    },
-    {
-      "at": "2026-11-07T09:19:01.335Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "ok"
     }
   ]
 }
