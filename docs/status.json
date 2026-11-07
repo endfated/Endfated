@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T22:53:37.943Z",
+  "updatedAt": "2026-11-07T22:54:25.369Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,7 +29,7 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -37,14 +37,14 @@
       "lastInStockAt": "2026-11-07T22:53:37.943Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "ok",
-      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-07T22:53:37.943Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": "2026-11-07T22:53:37.943Z",
-      "inStockSince": "2026-11-07T22:52:23.508Z",
-      "cartOkSince": "2026-11-07T22:52:23.508Z",
+      "inStockSince": null,
+      "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-07T22:52:23.508Z"
       }
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T22:54:25.369Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "ok",
+      "cart": null
+    },
     {
       "at": "2026-11-07T22:53:37.943Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": "blocked",
       "cart": null
-    },
-    {
-      "at": "2026-11-07T16:43:15.832Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "ok"
     }
   ]
 }
