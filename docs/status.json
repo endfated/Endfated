@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T14:09:49.628Z",
+  "updatedAt": "2026-11-07T14:10:27.980Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,17 +34,17 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-07T14:09:49.628Z",
+      "lastInStockAt": "2026-11-07T14:10:27.980Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "ok",
-      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-07T14:09:17.898Z",
+      "cart": "fail",
+      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
+      "cartCheckedAt": "2026-11-07T14:10:27.980Z",
       "verify": true,
       "lastCartOkAt": "2026-11-07T14:09:17.898Z",
       "inStockSince": "2026-11-07T14:06:37.563Z",
-      "cartOkSince": "2026-11-07T14:06:37.563Z",
+      "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-07T14:02:39.136Z"
       }
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T14:10:27.980Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "ok",
+      "cart": "fail"
+    },
     {
       "at": "2026-11-07T14:09:49.628Z",
       "id": "saturn",
@@ -1949,14 +1959,6 @@
       "name": "MediaMarkt",
       "from": "out_of_stock",
       "to": "in_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-07T05:08:53.793Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
       "price": 899.99
     }
   ]
