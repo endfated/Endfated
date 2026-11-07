@@ -58,7 +58,7 @@ const worker = async () => {
     results[i] = await checkStore(browser, stores[i]);
   }
 };
-await Promise.all(Array.from({ length: 3 }, worker));
+await Promise.all(Array.from({ length: 5 }, worker)); // all shops at once: one check takes ~8 s
 // cart check for in-stock verify stores: in parallel, outside the worker pool
 await Promise.all(stores.map(async (s, i) => {
   const r = results[i];
@@ -121,7 +121,7 @@ const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => 
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
 console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
-// checks run every minute: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
+// checks run every 30 s: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
 const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason, bucket(s.cart)]));
 const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
 const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 110 * 1000; // <2 min: checks drift by ±1 s

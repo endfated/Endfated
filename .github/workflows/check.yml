@@ -1,5 +1,5 @@
 name: check
-# Each run loops for ~5.5 h, checking every minute, and keeps a successor waiting in the queue
+# Each run loops for ~5.5 h, checking every 30 s, and keeps a successor waiting in the queue
 # (workflow_dispatch via GITHUB_TOKEN may start new runs), so the next run starts the moment this one ends.
 # watchdog.yml restarts the chain if it ever breaks completely.
 on:
@@ -15,7 +15,7 @@ concurrency:
   group: ps5-check
   cancel-in-progress: false
 env:
-  INTERVAL: 60    # seconds between checks (one check takes ~15 s)
+  INTERVAL: 30    # seconds between checks (one check takes ~8 s; a cart check adds up to 60 s)
   LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
   GH_TOKEN: ${{ github.token }}
   NOTIFY_UNVERIFIED: '0'  # only real restocks: no push when the cart check is blocked/unclear (status table still shows it)
