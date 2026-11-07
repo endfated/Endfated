@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T16:47:32.130Z",
+  "updatedAt": "2026-11-07T16:47:59.169Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,7 +34,7 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-07T16:47:32.130Z",
+      "lastInStockAt": "2026-11-07T16:47:59.169Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
@@ -54,7 +54,7 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -62,13 +62,13 @@
       "lastInStockAt": "2026-11-07T16:47:32.130Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "blocked",
-      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
-      "cartCheckedAt": "2026-11-07T16:47:32.130Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": "2026-11-07T16:45:50.508Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T16:47:59.169Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "blocked",
+      "cart": null
+    },
     {
       "at": "2026-11-07T16:47:32.130Z",
       "id": "mediamarkt",
@@ -2056,14 +2066,6 @@
       "id": "mediamarkt",
       "name": "MediaMarkt",
       "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-07T07:20:54.493Z",
-      "id": "ps-direct",
-      "name": "PlayStation Direct",
-      "from": "unknown",
       "to": "out_of_stock",
       "price": 899.99
     }
