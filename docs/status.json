@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T09:07:51.585Z",
+  "updatedAt": "2026-11-07T09:09:49.644Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -8,6 +8,7 @@
       "priority": 1,
       "status": "out_of_stock",
       "reason": "jsonld",
+      "via": "html",
       "price": 899.99,
       "capped": false,
       "lastInStockAt": null,
@@ -29,6 +30,7 @@
       "priority": 2,
       "status": "out_of_stock",
       "reason": "jsonld",
+      "via": "browser",
       "price": 899.99,
       "capped": false,
       "lastInStockAt": "2026-11-07T08:48:39.654Z",
@@ -52,6 +54,7 @@
       "priority": 3,
       "status": "out_of_stock",
       "reason": "jsonld",
+      "via": "browser",
       "price": 899.99,
       "capped": false,
       "lastInStockAt": "2026-11-07T08:48:39.654Z",
@@ -73,6 +76,7 @@
       "priority": 4,
       "status": "out_of_stock",
       "reason": "no_buy_button",
+      "via": "html",
       "price": null,
       "capped": false,
       "lastInStockAt": null,
@@ -94,6 +98,7 @@
       "priority": 7,
       "status": "out_of_stock",
       "reason": "jsonld",
+      "via": "html",
       "price": 899.99,
       "capped": false,
       "lastInStockAt": null,
