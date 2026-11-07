@@ -17,6 +17,7 @@ const scan = (t, markers, result, prefix = '') => { const m = findMarker(t, mark
 const visible = (loc) => loc.filter({ visible: true }).first();
 const shown = (loc, timeout) => loc.waitFor({ state: 'visible', timeout }).then(() => true, () => false);
 const settle = (page, ms) => page.waitForLoadState('networkidle', { timeout: ms }).catch(() => {});
+const until = async (fn, ms, step = 100) => { for (let t = 0; t < ms; t += step) { if (await fn()) return true; await new Promise((r) => setTimeout(r, step)); } return fn(); };
 const bodyText = async (page) => (await page.evaluate(() => document.body?.innerText || '')).toLowerCase();
 const appears = (page, markers, ms) => page.waitForFunction((ms) => {
   const t = (document.body?.innerText || '').toLowerCase();
@@ -26,7 +27,8 @@ const appears = (page, markers, ms) => page.waitForFunction((ms) => {
 async function flow(page, store, pause) {
   await page.goto(store.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
   const consent = page.locator(store.consent || CONSENT).first();
-  await Promise.all([shown(consent, 3 * pause).then((v) => v && consent.click().catch(() => {})), settle(page, 3 * pause)]);
+  await page.addLocatorHandler(consent, () => consent.click().catch(() => {})); // consent layer: dismissed whenever it shows up, even late
+  await Promise.all([shown(consent, 3 * pause), settle(page, 3 * pause)]);
   const pdp = await bodyText(page);
   // live page says "no delivery": the cached InStock was stale
   const early = scan(pdp, BLOCK, 'blocked') || scan(pdp, list(store.outOfStock, []), 'fail', 'Seite: ');
@@ -36,19 +38,20 @@ async function flow(page, store, pause) {
   const any = page.getByRole('button', { name: /in den warenkorb/i }); // buy box comes before the accessory carousels
   if (!(await shown(visible(own ? own.or(any) : any), 5 * pause))) return { result: 'unknown', detail: 'kein Warenkorb-Button' };
   const btn = visible(own && (await visible(own).count()) ? own : any); // store selector wins
+  const links = page.getByRole('link', { name: /zum warenkorb/i }).or(page.getByRole('button', { name: /zum warenkorb/i }));
+  const n0 = await links.count(); // header cart links exist before the click; only a NEW one is the success flyout
   await btn.click({ timeout: 10000 });
-  await page.waitForTimeout(pause / 2); // let the click register before a header cart link could match
-
-  const link = visible(page.getByRole('link', { name: /zum warenkorb/i }).or(page.getByRole('button', { name: /zum warenkorb/i })));
-  if (await shown(link, 4 * pause)) {
-    await link.click({ timeout: 10000 });
+  if (await until(() => links.count().then((n) => n > n0), 4 * pause)) {
+    await links.filter({ visible: true }).last().click({ timeout: 10000 }); // the new element: flyouts/modals are appended last
     await page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
   } else {
+    await settle(page, 3 * pause); // let an in-flight add request finish before reading the cart
     // no success flyout: an add-to-cart error that appeared after the click?
     const err = scan(await bodyText(page), list(store.addFail, ADD_FAIL).filter((m) => !pdp.includes(m)), 'fail', 'Seite: ');
     if (err) return err;
-    if (!store.cartUrl) return { result: 'unknown', detail: 'kein Weg zum Warenkorb' };
-    await page.goto(store.cartUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
+    if (store.cartUrl) await page.goto(store.cartUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
+    else if (n0) await visible(links).click({ timeout: 10000 }); // existing header link as last resort
+    else return { result: 'unknown', detail: 'kein Weg zum Warenkorb' };
   }
   const product = list(store.cartExpect, PRODUCT);
   const empty = list(store.cartEmpty, EMPTY);

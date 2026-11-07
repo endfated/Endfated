@@ -7,13 +7,16 @@ import { launchOptions } from '../src/check.js';
 
 const page = (body) => `<!doctype html><html><head><title>Test</title></head><body>${body}</body></html>`;
 const FLY = { noflyout: 'Hinzugefügt', toast: 'Artikel konnte nicht hinzugefügt werden' };
-// PDP: consent layer, static "Abholung nicht verfügbar" (must not count as fail), main button opens flyout and
-// renders unrelated "ausverkauft" text shortly after the click; accessory carousel button later in the DOM
-const pdp = (cart) => page(`
-  <div id="consent"><button id="pwa-consent-layer-accept-all-button" onclick="this.parentNode.remove()">Alle zulassen</button></div>
+// PDP like the real shop: consent layer (blocks clicks while shown; optionally appears late), header cart link that exists before
+// any click, static "Abholung nicht verfügbar" (must not count as fail), main button registers the add after 300 ms and then shows
+// the flyout plus unrelated "ausverkauft" text; accessory carousel button later in the DOM
+const consent = '<div id="consent"><button id="pwa-consent-layer-accept-all-button" onclick="this.parentNode.remove()">Alle zulassen</button></div>';
+const pdp = (cart, lateConsent) => page(`
+  ${lateConsent ? `<script>setTimeout(()=>document.body.insertAdjacentHTML('afterbegin', ${JSON.stringify(consent)}), 700)</script>` : consent}
+  <header><a href="/cart/empty">Zum Warenkorb</a></header>
   <h1>Sony PlayStation®5 Pro 2 TB</h1><p>Lieferung nach Hause 09.11.2026 - 11.11.2026 + 0,– €</p>
   <p>899,99 € inkl. MwSt. versandkostenfrei</p><p>Abholung im Markt: nicht verfügbar</p>
-  <button id="main" onclick="if(document.getElementById('consent'))return;document.getElementById('fly').hidden=false;setTimeout(()=>document.getElementById('late').textContent='Zubehör ausverkauft',150)">In den Warenkorb</button>
+  <button id="main" onclick="if(document.getElementById('consent'))return;setTimeout(()=>{document.getElementById('fly').hidden=false;document.getElementById('late').textContent='Zubehör ausverkauft'},300)">In den Warenkorb</button>
   <div id="fly" hidden>${FLY[cart] ?? `<a href="/cart/${cart}">Zum Warenkorb</a>`}</div><p id="late"></p>
   <section><h2>Zubehör</h2><button onclick="location.href='/cart/wrong'">In den Warenkorb</button></section>`);
 const item = '<h1>Warenkorb</h1><p>Sony PlayStation®5 Pro 2 TB</p><p>899,99 €</p>';
@@ -34,8 +37,8 @@ const PAGES = {
 let server, base, browser;
 before(async () => {
   server = http.createServer((req, res) => {
-    const [, kind, arg] = req.url.split('/');
-    const html = kind === 'pdp' ? pdp(arg) : kind === 'cart' ? CART[arg] : PAGES[kind];
+    const [, kind, arg] = req.url.replace('?late', '').split('/');
+    const html = kind === 'pdp' ? pdp(arg, req.url.endsWith('?late')) : kind === 'cart' ? CART[arg] : PAGES[kind];
     res.writeHead(html ? 200 : 404, { 'content-type': 'text/html; charset=utf-8' }).end(html || 'nope');
   });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
@@ -53,6 +56,17 @@ for (const [cart, want] of [['ok', 'ok'], ['fail', 'fail'], ['pickup', 'ok'], ['
     assert.ok(r.detail.length <= 200);
   });
 }
+
+test('consent layer appearing late is dismissed before the click', async () => {
+  const r = await run('/pdp/ok?late');
+  assert.equal(r.result, 'ok', r.detail);
+});
+
+test('no flyout, no cartUrl -> existing header link as last resort', async () => {
+  const r = await run('/pdp/noflyout');
+  assert.equal(r.result, 'unknown');
+  assert.match(r.detail, /^Warenkorb leer/);
+});
 
 test('PDP blocked -> blocked before any click', async () => {
   assert.equal((await run('/blocked')).result, 'blocked');
@@ -76,10 +90,6 @@ test('add-to-cart error toast -> fail; unrelated new text is ignored', async () 
 test('no flyout -> goto cartUrl', async () => {
   const r = await run('/pdp/noflyout', { addToCart: '#main', cartUrl: `${base}/cart/ok` });
   assert.equal(r.result, 'ok', r.detail);
-});
-
-test('no flyout, no cartUrl -> unknown', async () => {
-  assert.equal((await run('/pdp/noflyout')).result, 'unknown');
 });
 
 test('overall timeout -> unknown', async () => {

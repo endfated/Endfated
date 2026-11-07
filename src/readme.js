@@ -10,10 +10,11 @@ const CART = { ok: 'ok', fail: 'nein', blocked: 'blockiert', unknown: 'unklar' }
 const last = (iso) => (iso ? time(iso) : 'noch nie');
 
 // in stock, and either no cart check for this shop or the cart check passed
-const buyable = (s) => s.status === 'in_stock' && (!s.cart || s.cart === 'ok');
+const buyable = (s) => s.status === 'in_stock' && !s.capped && (!s.cart || s.cart === 'ok');
 
 function label(s) {
   if (s.status === 'unknown' && REASON[s.reason]) return `⚪ ${REASON[s.reason]}`;
+  if (s.status === 'in_stock' && s.capped) return '🟠 Verfügbar (Marketplace-Preis)';
   if (s.status !== 'in_stock' || !s.cart) return LABEL[s.status];
   if (buyable(s)) return '🟢 **Bestellbar** (Warenkorb OK)';
   return s.cart === 'fail' ? '🟡 Seite: verfügbar, Warenkorb: nein' : '🟢 **Verfügbar** (ungeprüft)';
@@ -32,7 +33,7 @@ export function renderStatusMd({ updatedAt, stores = [], disabled = [], history 
     lines.push('', '<details><summary>Letzte Änderungen</summary>', '');
     for (const h of history.slice(0, 5)) {
       const status = h.from !== h.to ? ` ${LABEL[h.from] ?? h.from} → ${LABEL[h.to] ?? h.to}` : '';
-      const cart = h.cart ? ` · Warenkorb: ${h.cartFrom ? `${CART[h.cartFrom] ?? h.cartFrom} → ` : ''}${CART[h.cart] ?? h.cart}` : '';
+      const cart = h.cart || h.cartFrom ? ` · Warenkorb: ${h.cartFrom ? `${CART[h.cartFrom] ?? h.cartFrom} → ` : ''}${CART[h.cart] ?? h.cart ?? '–'}` : '';
       lines.push(`- ${time(h.at)}: ${h.name}${status}${cart}`);
     }
     lines.push('', '</details>');
