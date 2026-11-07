@@ -8,10 +8,12 @@ export default [
     note: 'URL from search; page text "Derzeit nicht vorrätig" seen when OOS; max 1 per order; queue/bot protection likely' },
   { id: 'mediamarkt', name: 'MediaMarkt', priority: 2,
     url: 'https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html',
+    verify: true, cartUrl: 'https://www.mediamarkt.de/checkout', // cart check on in_stock; cartUrl unverified
     inStock: ['in den warenkorb'], outOfStock: ['leider keine lieferung möglich'],
     note: 'URL from search, unverified live; OOS text seen in index; "In den Warenkorb" may appear on carousels; likely bot-blocked' },
   { id: 'saturn', name: 'Saturn', priority: 3,
     url: 'https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html',
+    verify: true, cartUrl: 'https://www.saturn.de/checkout', // cart check on in_stock; cartUrl unverified
     inStock: ['in den warenkorb'], outOfStock: ['leider keine lieferung möglich'],
     note: 'Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked' },
   { id: 'expert', name: 'expert', priority: 4,

@@ -1,7 +1,9 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import allStores from './stores.js';
-import { classify, fetchPage, pageText, httpReason } from './check.js';
+import { classify, fetchPage, pageText, httpReason, launchOptions } from './check.js';
+import { verifyCart } from './verify.js';
+import { decidePush } from './policy.js';
 import { notify } from './notify.js';
 import { renderStatusMd, replaceStatus } from './readme.js';
 
@@ -13,6 +15,7 @@ const dry = args.includes('--dry-run');
 const BLOCK_AFTER = 48;
 // skip pushes for scalper/marketplace prices (UVP ~800-900 €)
 const MAX_PRICE = Number(process.env.MAX_PRICE || 1000);
+const pageOnly = process.env.NOTIFY_PAGE_ONLY === '1';
 
 if (args.includes('--test-notify')) {
   await notify({ title: '🎮 Test', message: 'PS5 Pro Tracker: Testnachricht', priority: 'default' });
@@ -36,6 +39,10 @@ async function checkStore(browser, s) {
       const hits = [...t.matchAll(/.{0,60}(verfügbar|lieferbar|vorrätig|warenkorb|ausverkauft).{0,60}/g)].slice(0, 8);
       console.log(`[${s.id}] no_signal:\n  ${hits.map((m) => m[0]).join('\n  ') || t.slice(0, 300)}`);
     }
+    if (r.status === 'in_stock' && s.verify && !(r.price > MAX_PRICE)) {
+      r.cart = await verifyCart(browser, s);
+      console.log(`[${s.id}] cart=${r.cart.result} ${r.cart.detail}`);
+    }
     return r;
   } catch (e) {
     console.error(`${s.id}: ${e.message.split('\n')[0]}`);
@@ -43,10 +50,7 @@ async function checkStore(browser, s) {
   }
 }
 
-const launch = { headless: true };
-if (process.env.CHROMIUM_PATH) launch.executablePath = process.env.CHROMIUM_PATH;
-if (process.env.HTTPS_PROXY) launch.proxy = { server: process.env.HTTPS_PROXY };
-const browser = await chromium.launch(launch);
+const browser = await chromium.launch(launchOptions());
 
 const results = new Array(stores.length);
 let next = 0;
@@ -68,25 +72,28 @@ stores.forEach((s, i) => {
   const r = results[i];
   const o = old[s.id] || {};
   const streak = r.status === 'unknown' ? (o.unknownStreak || 0) + 1 : 0;
+  const capped = r.status === 'in_stock' && r.price > MAX_PRICE; // marketplace price: no push, no state change
+  const ok = !capped && r.cart?.result === 'ok';
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
     status: r.status, reason: r.reason, price: r.price,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak,
-    known: r.status === 'unknown' ? o.known || null : r.status,
+    known: r.status === 'unknown' || capped ? o.known || null : r.status,
+    cart: r.cart?.result ?? null, cartDetail: r.cart?.detail ?? null, cartOk: ok,
+    verify: !!s.verify, lastCartOkAt: ok ? now : o.lastCartOkAt || null, pushedAt: o.pushedAt || {},
   };
   out.push(entry);
   const from = o.status;
   if (from && from !== r.status) {
-    history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price });
+    history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price, cart: entry.cart });
+  } else if (entry.cart && entry.cart !== (o.cart ?? null)) {
+    history.unshift({ at: now, id: s.id, name: s.name, from: r.status, to: r.status, price: r.price, cartFrom: o.cart ?? null, cart: entry.cart });
   }
-  // compare against last known status so unknown<->in_stock flapping doesn't re-push
-  if (r.status === 'in_stock' && o.known !== 'in_stock' && !(r.price > MAX_PRICE)) {
-    pushes.push({
-      title: `🎮 PS5 Pro verfügbar bei ${s.name}!`,
-      message: `Jetzt verfügbar${r.price != null ? ` für ${r.price} €` : ''}: ${s.name}`,
-      url: s.url, priority: 'urgent',
-    });
+  const p = decidePush(s, r, o, now, MAX_PRICE, { pageOnly });
+  if (p) {
+    pushes.push(p);
+    entry.pushedAt = { ...entry.pushedAt, [p.kind]: now };
   }
   if (streak === BLOCK_AFTER) {
     pushes.push({
@@ -102,7 +109,7 @@ const status = { updatedAt: now, stores: out, disabled, history: history.slice(0
 
 console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
 // checks run every minute: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
-const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason]));
+const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason, s.cart]));
 const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
 const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 110 * 1000; // <2 min: checks drift by ±1 s
 if (dry) {

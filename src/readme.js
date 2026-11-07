@@ -6,19 +6,32 @@ const eur = (p) => (p == null ? '–' : p.toLocaleString('de-DE', { style: 'curr
 const REASON = { blocked: 'Blockiert (Bot-Schutz)', not_found: 'Seite nicht gefunden', error: 'Shop-Fehler' };
 const LABEL = { in_stock: '🟢 **Verfügbar**', out_of_stock: '🔴 Ausverkauft', unknown: '⚪ Unbekannt' };
 
-const label = (s) => (s.status === 'unknown' && REASON[s.reason] ? `⚪ ${REASON[s.reason]}` : LABEL[s.status]);
+const CART = { ok: 'ok', fail: 'nein', blocked: 'blockiert', unknown: 'unklar' };
+const last = (iso) => (iso ? time(iso) : 'noch nie');
+
+function label(s) {
+  if (s.status === 'unknown' && REASON[s.reason]) return `⚪ ${REASON[s.reason]}`;
+  if (s.status !== 'in_stock' || !s.cart) return LABEL[s.status];
+  if (s.cartOk) return '🟢 **Bestellbar** (Warenkorb OK)';
+  return s.cart === 'fail' ? '🟡 Seite: verfügbar, Warenkorb: nein' : '🟢 **Verfügbar** (ungeprüft)';
+}
 
 export function renderStatusMd({ updatedAt, stores = [], disabled = [], history = [] }) {
   const rows = [...stores].sort((a, b) => a.priority - b.priority).map((s) =>
-    `| [${s.name}](${s.url}) | ${label(s)} | ${eur(s.price)} | ${s.lastInStockAt ? time(s.lastInStockAt) : 'noch nie'} |`);
+    `| [${s.name}](${s.url}) | ${label(s)} | ${eur(s.price)} | ${last(s.lastInStockAt)}${s.verify ? `<br>🛒 ${last(s.lastCartOkAt)}` : ''} |`);
   const lines = [`**Zuletzt geprüft:** ${time(updatedAt)} Uhr`, ''];
-  if (stores.some((s) => s.status === 'in_stock')) lines.push('> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**', '');
+  if (stores.some((s) => s.status === 'in_stock' && (s.cartOk || !s.cart))) lines.push('> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**', '');
   if (stores.length && stores.every((s) => s.status === 'unknown')) lines.push('> ⚠️ Kein Shop konnte geprüft werden.', '');
   lines.push('| Shop | Status | Preis | Zuletzt verfügbar |', '|---|---|---|---|', ...rows);
+  if (stores.some((s) => s.verify)) lines.push('', '🛒 = zuletzt wirklich bestellbar (Artikel im Warenkorb, Kasse erreichbar)');
   if (disabled.length) lines.push('', `Nicht überwacht (Bot-Schutz, bitte selbst prüfen): ${disabled.map((s) => `[${s.name}](${s.url})`).join(' · ')}`);
   if (history.length) {
     lines.push('', '<details><summary>Letzte Änderungen</summary>', '');
-    for (const h of history.slice(0, 5)) lines.push(`- ${time(h.at)}: ${h.name} ${LABEL[h.from] ?? h.from} → ${LABEL[h.to] ?? h.to}`);
+    for (const h of history.slice(0, 5)) {
+      lines.push(h.from === h.to
+        ? `- ${time(h.at)}: ${h.name} Warenkorb: ${CART[h.cartFrom] ?? '–'} → ${CART[h.cart] ?? h.cart}`
+        : `- ${time(h.at)}: ${h.name} ${LABEL[h.from] ?? h.from} → ${LABEL[h.to] ?? h.to}${h.cart ? ` (Warenkorb: ${CART[h.cart] ?? h.cart})` : ''}`);
+    }
     lines.push('', '</details>');
   }
   return lines.join('\n');

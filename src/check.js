@@ -1,5 +1,7 @@
+import { existsSync } from 'node:fs';
+
 // bot-protection pages -> reported as 'blocked', never as a stock status
-const BLOCK = [
+export const BLOCK = [
   'captcha', 'access denied', 'are you a robot', 'unusual traffic', '403 forbidden',
   'nur einen moment', 'just a moment', 'enable javascript and cookies',
   'um mit dem einkauf fortzufahren',
@@ -68,16 +70,30 @@ export function classify(html, store = {}) {
   return none('no_signal');
 }
 
-export async function fetchPage(browser, url) {
+// same UA/locale for every visit; only HTML/JS needed: skip images/fonts/media
+export async function newContext(browser) {
   const ctx = await browser.newContext({
     locale: 'de-DE',
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
   });
+  await ctx.route('**/*', (r) =>
+    ['image', 'font', 'media'].includes(r.request().resourceType()) ? r.abort() : r.continue());
+  return ctx;
+}
+
+// Chrome preinstalled on GitHub runners, else Playwright's own browser; proxy when set
+export function launchOptions() {
+  const o = { headless: true };
+  const p = process.env.CHROMIUM_PATH || ['/usr/bin/google-chrome', '/opt/pw-browsers/chromium'].find((x) => existsSync(x));
+  if (p) o.executablePath = p;
+  if (process.env.HTTPS_PROXY) o.proxy = { server: process.env.HTTPS_PROXY, bypass: '127.0.0.1,localhost' }; // local test server stays direct
+  return o;
+}
+
+export async function fetchPage(browser, url) {
+  const ctx = await newContext(browser);
   try {
-    // only HTML is needed: skip images/fonts/media
-    await ctx.route('**/*', (r) =>
-      ['image', 'font', 'media'].includes(r.request().resourceType()) ? r.abort() : r.continue());
     const page = await ctx.newPage();
     const res = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForTimeout(3000);
