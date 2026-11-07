@@ -3,13 +3,13 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 07.11.26, 17:26 Uhr
+**Zuletzt geprüft:** 07.11.26, 17:27 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
 | [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 07.11.26, 17:22<br>🛒 07.11.26, 17:21 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟡 Seite: verfügbar, Warenkorb: nein | 899,99 € | 07.11.26, 17:26<br>🛒 noch nie |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 07.11.26, 17:26<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
@@ -19,11 +19,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 07.11.26, 17:27: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: nein → –
 - 07.11.26, 17:26: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: nein
 - 07.11.26, 17:24: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: nein → –
 - 07.11.26, 17:24: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: nein
 - 07.11.26, 17:23: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: unklar → –
-- 07.11.26, 17:23: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: nein → –
 
 </details>
 <!-- STATUS:END -->
