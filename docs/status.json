@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T08:41:27.231Z",
+  "updatedAt": "2026-11-07T08:42:07.348Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -54,12 +54,12 @@
       "reason": "jsonld",
       "price": 899.99,
       "capped": false,
-      "lastInStockAt": "2026-11-07T08:41:27.231Z",
+      "lastInStockAt": "2026-11-07T08:42:07.348Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "Saturn | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beamer küche haushalt + garten gaming + vr | angebo",
+      "cart": "fail",
+      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-07T08:38:32.475Z",
@@ -137,6 +137,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T08:42:07.348Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": "fail"
+    },
     {
       "at": "2026-11-07T08:41:27.231Z",
       "id": "saturn",
@@ -1735,14 +1745,6 @@
       "at": "2026-11-07T01:12:41.316Z",
       "id": "saturn",
       "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-07T01:11:41.815Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
       "from": "out_of_stock",
       "to": "in_stock",
       "price": 899.99
