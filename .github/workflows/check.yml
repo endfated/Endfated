@@ -1,5 +1,5 @@
 name: check
-# Each run loops for ~5.5 h, checking every 15 s, and keeps a successor waiting in the queue
+# Each run loops for ~5.5 h, checking every 20 s, and keeps a successor waiting in the queue
 # (workflow_dispatch via GITHUB_TOKEN may start new runs), so the next run starts the moment this one ends.
 # watchdog.yml restarts the chain if it ever breaks completely.
 on:
@@ -15,7 +15,7 @@ concurrency:
   group: ps5-check
   cancel-in-progress: false
 env:
-  INTERVAL: 15    # seconds between checks (one check takes ~2 s; a cart check adds up to 60 s)
+  INTERVAL: 20    # seconds between checks (one check takes ~3 s; a cart check adds up to 60 s). 15 s got MediaMarkt/Saturn blocked
   LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
   GH_TOKEN: ${{ github.token }}
   NOTIFY_UNVERIFIED: '0'  # only real restocks: no push when the cart check is blocked/unclear (status table still shows it)
@@ -56,8 +56,8 @@ jobs:
           end=$((SECONDS + LOOP_FOR)) n=0
           while [ $SECONDS -lt $end ]; do
             start=$SECONDS
-            # every 60 rounds (~15 min) re-check that a successor is queued (background: never blocks or stops the loop)
-            if [ $((++n % 60)) = 0 ]; then bash scripts/ensure-run.sh successor & fi
+            # every 45 rounds (~15 min) re-check that a successor is queued (background: never blocks or stops the loop)
+            if [ $((++n % 45)) = 0 ]; then bash scripts/ensure-run.sh successor & fi
             echo "::group::check $(date -u +%H:%M)"
             timeout 150 npm run check || echo "check failed or hung, retry next round"
             git add docs/status.json README.md

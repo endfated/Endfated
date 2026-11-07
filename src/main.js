@@ -29,11 +29,18 @@ const old = Object.fromEntries((prev.stores || []).map((s) => [s.id, s]));
 
 async function checkStore(browser, s) {
   try {
-    // fast path: server-rendered HTML; full render only when that gives no stock signal
-    let via = 'html';
-    let { html, http, title } = await fetchHtml(browser, s.url);
-    let r = classify(html, s);
-    if (r.status === 'unknown') { via = 'browser'; ({ html, http, title } = await fetchPage(browser, s.url)); r = classify(html, s); }
+    // fast path: server-rendered HTML; full render when the shop challenges plain requests or the HTML gives no stock signal
+    let via = 'html', html = '', http = null, title = '', r = { status: 'unknown' };
+    if (!s.render) {
+      ({ html, http, title } = await fetchHtml(browser, s.url));
+      r = classify(html, s);
+      if (r.status === 'unknown') console.log(`[${s.id}] html fetch: http=${http} ${r.reason} "${title.slice(0, 60)}" -> rendering`);
+    }
+    if (r.status === 'unknown') {
+      via = 'browser';
+      ({ html, http, title } = await fetchPage(browser, s.url, (h) => classify(h, s).status !== 'unknown'));
+      r = classify(html, s);
+    }
     const hr = httpReason(http);
     if (r.status === 'unknown' && hr) r.reason = hr;
     r.capped = r.status === 'in_stock' && r.price > MAX_PRICE; // marketplace price: no cart check, no push, no state change
@@ -96,9 +103,10 @@ stores.forEach((s, i) => {
     pushedAt: o.pushedAt || {},
   };
   out.push(entry);
-  const from = o.status ?? r.status, cartFrom = o.cart ?? null;
-  if (from !== r.status || bucket(cartFrom) !== bucket(entry.cart)) {
-    history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price, cartFrom, cart: entry.cart });
+  // history follows the last KNOWN status: a blocked/failed check is noise, not a stock change
+  const from = o.known ?? known, cartFrom = o.cart ?? null;
+  if (known && (from !== known || bucket(cartFrom) !== bucket(entry.cart))) {
+    history.unshift({ at: now, id: s.id, name: s.name, from, to: known, price: r.price, cartFrom, cart: entry.cart });
   }
   const p = decidePush(s, r, o, now, { pageOnly, unverified });
   if (p) pushes.push({ ...p, entry });
@@ -124,8 +132,8 @@ const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => 
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
 console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, via: results[i].via, title: results[i].title })));
-// checks run every 15 s: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
-const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason, bucket(s.cart)]));
+// checks run every 20 s: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
+const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.known, s.price, bucket(s.cart)])); // known: blocked checks don't force a commit
 const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
 const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 110 * 1000; // <2 min: checks drift by ±1 s
 if (dry) {

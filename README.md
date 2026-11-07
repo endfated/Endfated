@@ -30,7 +30,7 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 ---
 
-Prüft alle 15 Sekunden per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, aktualisiert die Status-Tabelle oben in dieser README und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
+Prüft alle 20 Sekunden per GitHub Actions (Playwright/Chromium) mehrere Shops auf PS5-Pro-Verfügbarkeit, schreibt `docs/status.json`, aktualisiert die Status-Tabelle oben in dieser README und schickt bei Verfügbarkeit einen Push über [ntfy](https://ntfy.sh).
 
 Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstaben-Teilstrings; "ausverkauft"-Marker haben Vorrang. Captcha/Blockade-Seiten gelten als "unbekannt". Nach 48 unbekannten Läufen in Folge gibt es einen Hinweis-Push.
 
@@ -40,7 +40,7 @@ Shops und Erkennungs-Marker stehen in `src/stores.js`. Marker sind Kleinbuchstab
 2. Im Repo unter *Settings > Secrets and variables > Actions* das Secret `NTFY_TOPIC` mit diesem Topic anlegen.
 3. Tab *Actions > check > Run workflow* einmal manuell starten.
 
-Danach läuft alles allein: Jeder Lauf prüft ~5½ Stunden lang alle 15 Sekunden und hält immer schon den nächsten Lauf in der Warteschlange bereit (Fehler der GitHub-API werden wiederholt). Zusätzlich startet der Workflow `watchdog` alle 15 Minuten die Prüfung neu, falls gar nichts läuft. Das geht nur kostenlos, weil das Repo öffentlich ist (private Repos: 2.000 Actions-Minuten/Monat).
+Danach läuft alles allein: Jeder Lauf prüft ~5½ Stunden lang alle 20 Sekunden und hält immer schon den nächsten Lauf in der Warteschlange bereit (Fehler der GitHub-API werden wiederholt). Zusätzlich startet der Workflow `watchdog` alle 15 Minuten die Prüfung neu, falls gar nichts läuft. Das geht nur kostenlos, weil das Repo öffentlich ist (private Repos: 2.000 Actions-Minuten/Monat).
 
 Ohne Änderung wird der Status alle 2 Minuten neu geschrieben ("Zuletzt geprüft" ist also höchstens ~2 Min alt); geprüft wird trotzdem bei jedem Lauf, und ein Restock wird sofort gepusht.
 

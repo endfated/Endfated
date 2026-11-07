@@ -107,13 +107,15 @@ export async function fetchHtml(browser, url) {
   }
 }
 
-export async function fetchPage(browser, url) {
+// full render; `ready(html)` true -> return at once (server-rendered JSON-LD), else wait 3 s for client-side content
+export async function fetchPage(browser, url, ready = () => false) {
   const ctx = await newContext(browser);
   try {
     const page = await ctx.newPage();
     const res = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForTimeout(3000);
-    return { html: await page.content(), http: res?.status() ?? null, title: await page.title() };
+    let html = await page.content();
+    if (!ready(html)) { await page.waitForTimeout(3000); html = await page.content(); }
+    return { html, http: res?.status() ?? null, title: await page.title() };
   } finally {
     await ctx.close();
   }
