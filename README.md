@@ -3,27 +3,29 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 07.11.26, 09:35 Uhr
+**Zuletzt geprüft:** 07.11.26, 09:38 Uhr
 
 > 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** | 899,99 € | 07.11.26, 09:35 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 07.11.26, 09:33 |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Bestellbar** (Warenkorb OK) | 899,99 € | 07.11.26, 09:38<br>🛒 07.11.26, 09:38 |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 07.11.26, 09:38<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
+
+🛒 = zuletzt wirklich bestellbar (Artikel im Warenkorb, Kasse erreichbar)
 
 Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.amazon.de/dp/B0DHSV68YZ) · [Otto](https://www.otto.de/p/playstation-5-playstation-5-pro-2tb-playstation-5-pro-konsole-C1914416905/) · [Euronics](https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-pro-konsole-4065465034645) · [Geizhals (aggregator)](https://geizhals.de/sony-playstation-5-pro-2tb-weiss-a3298140.html) · [Galaxus](https://www.galaxus.de/de/s1/product/sony-playstation-5-pro-2-tb-spielkonsole-49618254)
 
 <details><summary>Letzte Änderungen</summary>
 
+- 07.11.26, 09:38: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
+- 07.11.26, 09:38: MediaMarkt · Warenkorb: ok
 - 07.11.26, 09:35: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
 - 07.11.26, 09:35: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar**
 - 07.11.26, 09:33: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar**
-- 07.11.26, 09:25: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft
-- 07.11.26, 09:23: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft
 
 </details>
 <!-- STATUS:END -->
