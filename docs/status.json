@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:07:43.758Z",
+  "updatedAt": "2026-11-07T17:08:55.468Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,19 +34,19 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-07T17:07:43.758Z",
+      "lastInStockAt": "2026-11-07T17:08:55.468Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "locator.click: Timeout 10000ms exceeded.",
-      "cartCheckedAt": "2026-11-07T17:07:43.758Z",
+      "cart": "ok",
+      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-07T17:08:55.468Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-07T17:01:54.489Z",
+      "lastCartOkAt": "2026-11-07T17:08:55.468Z",
       "inStockSince": "2026-11-07T17:07:43.758Z",
-      "cartOkSince": null,
+      "cartOkSince": "2026-11-07T17:08:55.468Z",
       "pushedAt": {
-        "cart_ok": "2026-11-07T16:57:28.065Z"
+        "cart_ok": "2026-11-07T17:08:55.468Z"
       }
     },
     {
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-07T17:07:43.758Z",
+      "lastInStockAt": "2026-11-07T17:08:55.468Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
-      "cartCheckedAt": "2026-11-07T17:07:43.758Z",
+      "cart": "blocked",
+      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
+      "cartCheckedAt": "2026-11-07T17:08:55.468Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-07T17:07:43.758Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-07T17:08:55.468Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": "ok"
+    },
     {
       "at": "2026-11-07T17:07:43.758Z",
       "id": "saturn",
@@ -2093,14 +2103,6 @@
       "at": "2026-11-07T07:42:53.833Z",
       "id": "saturn",
       "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99
-    },
-    {
-      "at": "2026-11-07T07:42:53.833Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
       "from": "out_of_stock",
       "to": "in_stock",
       "price": 899.99
