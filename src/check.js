@@ -93,6 +93,20 @@ export function launchOptions() {
   return o;
 }
 
+// plain HTML fetch through the browser context (cookies, no rendering): ~1 s instead of ~5 s. The shops render
+// JSON-LD and the buy box on the server, so this is the same data the full page shows; main.js falls back to fetchPage
+// when the HTML gives no signal (challenge page, JS-only content).
+export async function fetchHtml(browser, url) {
+  const ctx = await newContext(browser);
+  try {
+    const res = await ctx.request.get(url, { timeout: 15000, maxRedirects: 5, headers: { accept: 'text/html,application/xhtml+xml', 'accept-language': 'de-DE,de;q=0.9' } });
+    const html = await res.text();
+    return { html, http: res.status(), title: (html.match(/<title[^>]*>([^<]*)/i)?.[1] ?? '').trim() };
+  } finally {
+    await ctx.close();
+  }
+}
+
 export async function fetchPage(browser, url) {
   const ctx = await newContext(browser);
   try {

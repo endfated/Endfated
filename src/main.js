@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import allStores from './stores.js';
-import { classify, fetchPage, pageText, httpReason, launchOptions } from './check.js';
+import { classify, fetchHtml, fetchPage, pageText, httpReason, launchOptions } from './check.js';
 import { verifyCart } from './verify.js';
 import { decidePush } from './policy.js';
 import { notify } from './notify.js';
@@ -29,12 +29,15 @@ const old = Object.fromEntries((prev.stores || []).map((s) => [s.id, s]));
 
 async function checkStore(browser, s) {
   try {
-    const { html, http, title } = await fetchPage(browser, s.url);
-    const r = classify(html, s);
+    // fast path: server-rendered HTML; full render only when that gives no stock signal
+    let via = 'html';
+    let { html, http, title } = await fetchHtml(browser, s.url);
+    let r = classify(html, s);
+    if (r.status === 'unknown') { via = 'browser'; ({ html, http, title } = await fetchPage(browser, s.url)); r = classify(html, s); }
     const hr = httpReason(http);
     if (r.status === 'unknown' && hr) r.reason = hr;
     r.capped = r.status === 'in_stock' && r.price > MAX_PRICE; // marketplace price: no cart check, no push, no state change
-    Object.assign(r, { http, title: title.slice(0, 50) });
+    Object.assign(r, { http, via, title: title.slice(0, 50) });
     if (r.reason === 'no_signal') {
       // diagnose: text around availability words, to tune markers
       const t = pageText(html);
@@ -83,7 +86,7 @@ stores.forEach((s, i) => {
   const cart = r.cart?.result ?? null;
   const entry = {
     id: s.id, name: s.name, url: s.url, priority: s.priority,
-    status: r.status, reason: r.reason, price: r.price, capped: !!r.capped,
+    status: r.status, reason: r.reason, via: r.via ?? null, price: r.price, capped: !!r.capped,
     lastInStockAt: r.status === 'in_stock' ? now : o.lastInStockAt || null,
     note: s.note || '', unknownStreak: streak, known,
     cart, cartDetail: r.cart?.detail ?? null, verify: !!s.verify, lastCartOkAt: cart === 'ok' ? now : o.lastCartOkAt || null,
@@ -120,8 +123,8 @@ if (!dry) {
 const disabled = allStores.filter((s) => s.disabled).map(({ id, name, url }) => ({ id, name, url }));
 const status = { updatedAt: now, stores: out, disabled, history: history.slice(0, 200) };
 
-console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, title: results[i].title })));
-// checks run every 30 s: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
+console.table(out.map(({ id, status, price, reason }, i) => ({ id, status, price, reason, http: results[i].http, via: results[i].via, title: results[i].title })));
+// checks run every 15 s: commit on a real change, else at most every 2 min (keeps "Zuletzt geprüft" fresh, history smaller)
 const sig = (list) => JSON.stringify((list || []).map((s) => [s.id, s.status, s.price, s.reason, bucket(s.cart)]));
 const changed = pushes.length > 0 || sig(out) !== sig(prev.stores);
 const stale = !prev.updatedAt || Date.parse(now) - Date.parse(prev.updatedAt) >= 110 * 1000; // <2 min: checks drift by ±1 s
