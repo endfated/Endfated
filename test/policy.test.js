@@ -53,4 +53,5 @@ test('verify store: blocked/unknown -> high once per in_stock streak, 30 min coo
   assert.equal(decidePush(mm, inStock('unknown'), { ...streak(5, 'blocked'), pushedAt: { unverified: ago(5) } }, now), null);
   assert.equal(decidePush(mm, inStock('blocked'), { known: 'out_of_stock', pushedAt: { unverified: ago(20) } }, now), null);
   assert.equal(decidePush(mm, inStock('blocked'), { known: 'out_of_stock', pushedAt: { unverified: ago(31) } }, now).priority, 'high');
+  assert.equal(decidePush(mm, inStock('blocked'), { known: 'out_of_stock' }, now, { unverified: false }), null);
 });

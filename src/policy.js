@@ -10,11 +10,11 @@ const TEXT = {
 // push for one store run, or null. One rule: a push of a kind is due once per streak of that kind's state (retried next run until
 // delivered, main.js stamps pushedAt only after ntfy accepted it), and never within the kind's cooldown.
 // r: check result (+ r.cart for verify stores, r.capped for marketplace prices), o: previous status entry (streak starts, pushedAt)
-export function decidePush(s, r, o = {}, now, { pageOnly = false } = {}) {
+export function decidePush(s, r, o = {}, now, { pageOnly = false, unverified = true } = {}) {
   if (r.status !== 'in_stock' || r.capped) return null;
   const c = r.cart?.result;
   const kind = !s.verify ? 'page' : c === 'ok' ? 'cart_ok' : c === 'fail' ? 'page_only' : 'unverified';
-  if (kind === 'page_only' && !pageOnly) return null;
+  if ((kind === 'page_only' && !pageOnly) || (kind === 'unverified' && !unverified)) return null;
   // start of the current streak: cart ok, or known in_stock (unknown<->in_stock flapping doesn't end a streak)
   const since = Date.parse((kind === 'cart_ok' ? o.cart === 'ok' && o.cartOkSince : o.known === 'in_stock' && o.inStockSince) || now);
   const last = o.pushedAt?.[kind] ? Date.parse(o.pushedAt[kind]) : -Infinity;

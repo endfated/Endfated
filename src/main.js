@@ -15,7 +15,8 @@ const dry = args.includes('--dry-run');
 const BLOCK_AFTER = 48;
 // skip pushes for scalper/marketplace prices (UVP ~800-900 €)
 const MAX_PRICE = Number(process.env.MAX_PRICE || 1000);
-const pageOnly = process.env.NOTIFY_PAGE_ONLY === '1';
+const pageOnly = process.env.NOTIFY_PAGE_ONLY === '1'; // also push (low) when only the page says in stock
+const unverified = process.env.NOTIFY_UNVERIFIED !== '0'; // push (high) when the cart check is blocked/unclear
 
 if (args.includes('--test-notify')) {
   await notify({ title: '🎮 Test', message: 'PS5 Pro Tracker: Testnachricht', priority: 'default' });
@@ -96,7 +97,7 @@ stores.forEach((s, i) => {
   if (from !== r.status || bucket(cartFrom) !== bucket(entry.cart)) {
     history.unshift({ at: now, id: s.id, name: s.name, from, to: r.status, price: r.price, cartFrom, cart: entry.cart });
   }
-  const p = decidePush(s, r, o, now, { pageOnly });
+  const p = decidePush(s, r, o, now, { pageOnly, unverified });
   if (p) pushes.push({ ...p, entry });
   if (streak === BLOCK_AFTER) {
     pushes.push({
