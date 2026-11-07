@@ -18,6 +18,7 @@ env:
   INTERVAL: 60    # seconds between checks (one check takes ~15 s)
   LOOP_FOR: ${{ inputs.loop_for || '19800' }} # 5.5 h, job limit is 6 h
   GH_TOKEN: ${{ github.token }}
+  NOTIFY_UNVERIFIED: '0'  # only real restocks: no push when the cart check is blocked/unclear (status table still shows it)
 jobs:
   # queue the successor in parallel, independent of setup; it starts the moment this run ends
   queue-next:
