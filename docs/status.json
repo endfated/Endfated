@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T14:17:06.310Z",
+  "updatedAt": "2026-11-08T14:18:07.377Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,24 +29,24 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T14:16:06.949Z",
+      "lastInStockAt": "2026-11-08T14:18:07.377Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock",
-      "cart": null,
-      "cartDetail": null,
-      "cartCheckedAt": null,
+      "known": "in_stock",
+      "cart": "ok",
+      "cartDetail": "ices warenkorb produkte im warenkorb werden nicht reserviert image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-08T14:18:07.377Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-08T14:15:03.403Z",
-      "inStockSince": null,
-      "cartOkSince": null,
+      "lastCartOkAt": "2026-11-08T14:18:07.377Z",
+      "inStockSince": "2026-11-08T14:18:07.377Z",
+      "cartOkSince": "2026-11-08T14:18:07.377Z",
       "pushedAt": {
-        "cart_ok": "2026-11-08T14:08:00.402Z"
+        "cart_ok": "2026-11-08T14:18:07.377Z"
       }
     },
     {
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T14:17:06.310Z",
+      "lastInStockAt": "2026-11-08T14:18:07.377Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
-      "cartCheckedAt": "2026-11-08T14:17:06.310Z",
+      "cart": "blocked",
+      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
+      "cartCheckedAt": "2026-11-08T14:18:07.377Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-08T14:17:06.310Z",
@@ -147,6 +147,26 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T14:18:07.377Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": "blocked"
+    },
+    {
+      "at": "2026-11-08T14:18:07.377Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": null,
+      "cart": "ok"
+    },
     {
       "at": "2026-11-08T14:17:06.310Z",
       "id": "saturn",
@@ -2126,26 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "ok"
-    },
-    {
-      "at": "2026-11-08T07:04:53.485Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
-      "cart": null
-    },
-    {
-      "at": "2026-11-08T07:03:48.280Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "unknown",
-      "cart": null
     }
   ]
 }
