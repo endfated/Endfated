@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T15:06:47.216Z",
+  "updatedAt": "2026-11-08T15:08:25.067Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,24 +29,24 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T14:47:47.548Z",
+      "lastInStockAt": "2026-11-08T15:08:25.067Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock",
-      "cart": null,
-      "cartDetail": null,
-      "cartCheckedAt": null,
+      "known": "in_stock",
+      "cart": "ok",
+      "cartDetail": "ices warenkorb produkte im warenkorb werden nicht reserviert image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-08T15:08:25.067Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-08T14:46:07.661Z",
-      "inStockSince": null,
-      "cartOkSince": null,
+      "lastCartOkAt": "2026-11-08T15:08:25.067Z",
+      "inStockSince": "2026-11-08T15:08:25.067Z",
+      "cartOkSince": "2026-11-08T15:08:25.067Z",
       "pushedAt": {
-        "cart_ok": "2026-11-08T14:42:00.454Z"
+        "cart_ok": "2026-11-08T15:08:25.067Z"
       }
     },
     {
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T15:08:25.067Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": null,
+      "cart": "ok"
+    },
     {
       "at": "2026-11-08T14:48:44.241Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "blocked"
-    },
-    {
-      "at": "2026-11-08T08:16:02.801Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "ok"
     }
   ]
 }
