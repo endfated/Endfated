@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T03:08:13.117Z",
+  "updatedAt": "2026-11-08T03:09:18.447Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,15 +34,15 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T03:08:13.117Z",
+      "lastInStockAt": "2026-11-08T03:09:18.447Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
       "cart": "ok",
       "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-08T03:07:47.221Z",
+      "cartCheckedAt": "2026-11-08T03:09:18.447Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-08T03:07:47.221Z",
+      "lastCartOkAt": "2026-11-08T03:09:18.447Z",
       "inStockSince": "2026-11-08T03:07:47.221Z",
       "cartOkSince": "2026-11-08T03:07:47.221Z",
       "pushedAt": {
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T03:08:13.117Z",
+      "lastInStockAt": "2026-11-08T03:09:18.447Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
-      "cartCheckedAt": "2026-11-08T03:08:13.117Z",
+      "cart": "blocked",
+      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
+      "cartCheckedAt": "2026-11-08T03:09:18.447Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-08T03:08:13.117Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T03:09:18.447Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": "blocked"
+    },
     {
       "at": "2026-11-08T03:08:13.117Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "ok"
-    },
-    {
-      "at": "2026-11-07T19:06:13.275Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
-      "cart": null
     }
   ]
 }
