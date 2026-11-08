@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T05:01:04.144Z",
+  "updatedAt": "2026-11-08T05:02:11.201Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,17 +34,17 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T05:01:04.144Z",
+      "lastInStockAt": "2026-11-08T05:02:11.201Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "ok",
-      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-08T05:01:04.144Z",
+      "cart": "blocked",
+      "cartDetail": "alle angebote von mediamarkt zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
+      "cartCheckedAt": "2026-11-08T05:02:11.201Z",
       "verify": true,
       "lastCartOkAt": "2026-11-08T05:01:04.144Z",
       "inStockSince": "2026-11-08T04:59:58.420Z",
-      "cartOkSince": "2026-11-08T05:01:04.144Z",
+      "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-08T04:53:12.050Z"
       }
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T05:01:04.144Z",
+      "lastInStockAt": "2026-11-08T05:02:11.201Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
       "cart": "unknown",
       "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
-      "cartCheckedAt": "2026-11-08T05:00:36.757Z",
+      "cartCheckedAt": "2026-11-08T05:02:11.201Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-08T05:00:36.757Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T05:02:11.201Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "ok",
+      "cart": "blocked"
+    },
     {
       "at": "2026-11-08T05:01:04.144Z",
       "id": "mediamarkt",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "unknown"
-    },
-    {
-      "at": "2026-11-07T20:50:34.717Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
-      "cart": null
     }
   ]
 }
