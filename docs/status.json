@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T16:49:07.009Z",
+  "updatedAt": "2026-11-08T16:49:27.850Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,7 +29,7 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -37,13 +37,13 @@
       "lastInStockAt": "2026-11-08T16:49:07.009Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: | (1288 bewertungen) usb pd 899, 99 € 899,99€ inkl. mwst. versandkostenfrei leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen vergleichen zum vergleich bedenken mit de",
-      "cartCheckedAt": "2026-11-08T16:49:07.009Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": "2026-11-08T16:46:42.778Z",
-      "inStockSince": "2026-11-08T16:49:07.009Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-08T16:44:21.386Z"
@@ -59,7 +59,7 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T16:49:07.009Z",
+      "lastInStockAt": "2026-11-08T16:49:27.850Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T16:49:27.850Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": null
+    },
     {
       "at": "2026-11-08T16:49:07.009Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": "blocked",
       "cart": "ok"
-    },
-    {
-      "at": "2026-11-08T12:19:43.136Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
-      "cart": "blocked"
     }
   ]
 }
