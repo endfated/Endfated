@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T16:17:43.579Z",
+  "updatedAt": "2026-11-08T16:18:14.739Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,7 +34,7 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T16:17:43.579Z",
+      "lastInStockAt": "2026-11-08T16:18:14.739Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
@@ -46,7 +46,7 @@
       "inStockSince": "2026-11-08T16:17:43.579Z",
       "cartOkSince": "2026-11-08T16:17:43.579Z",
       "pushedAt": {
-        "cart_ok": "2026-11-08T16:07:46.382Z"
+        "cart_ok": "2026-11-08T16:18:14.739Z"
       }
     },
     {
@@ -54,18 +54,18 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "unknown",
-      "reason": "blocked",
+      "status": "in_stock",
+      "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T16:16:07.639Z",
+      "lastInStockAt": "2026-11-08T16:18:14.739Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
-      "unknownStreak": 1,
+      "unknownStreak": 0,
       "known": "in_stock",
       "cart": "unknown",
       "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
-      "cartCheckedAt": "2026-11-08T16:16:07.639Z",
+      "cartCheckedAt": "2026-11-08T16:18:14.739Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-08T16:12:50.232Z",
