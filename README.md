@@ -5,12 +5,10 @@
 <!-- STATUS:START -->
 **Zuletzt geprüft:** 08.11.26, 17:18 Uhr
 
-> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**
-
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Bestellbar** (Warenkorb OK) | 899,99 € | 08.11.26, 17:18<br>🛒 08.11.26, 17:17 |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 08.11.26, 17:18<br>🛒 08.11.26, 17:17 |
 | [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 08.11.26, 17:18<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
@@ -21,11 +19,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 08.11.26, 17:18: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: ok → –
 - 08.11.26, 17:17: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: ok
 - 08.11.26, 17:16: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: unklar → –
 - 08.11.26, 17:14: Saturn · Warenkorb: nein → blockiert
 - 08.11.26, 17:14: MediaMarkt · Warenkorb: ok → unklar
-- 08.11.26, 17:12: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: nein
 
 </details>
 <!-- STATUS:END -->
