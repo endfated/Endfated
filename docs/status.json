@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T16:14:33.006Z",
+  "updatedAt": "2026-11-08T16:16:07.639Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,7 +29,7 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -37,13 +37,13 @@
       "lastInStockAt": "2026-11-08T16:14:33.006Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "locator.click: Timeout 10000ms exceeded.",
-      "cartCheckedAt": "2026-11-08T16:14:33.006Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": "2026-11-08T16:12:50.232Z",
-      "inStockSince": "2026-11-08T16:06:08.218Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-08T16:07:46.382Z"
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-08T16:14:33.006Z",
+      "lastInStockAt": "2026-11-08T16:16:07.639Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "blocked",
-      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
-      "cartCheckedAt": "2026-11-08T16:14:33.006Z",
+      "cart": "unknown",
+      "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
+      "cartCheckedAt": "2026-11-08T16:16:07.639Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-08T16:12:50.232Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-08T16:16:07.639Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": null
+    },
     {
       "at": "2026-11-08T16:14:33.006Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": "ok",
       "cart": null
-    },
-    {
-      "at": "2026-11-08T10:18:27.612Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "ok"
     }
   ]
 }
