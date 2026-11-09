@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T04:02:27.797Z",
+  "updatedAt": "2026-11-09T04:03:40.247Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,19 +34,19 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-09T04:02:27.797Z",
+      "lastInStockAt": "2026-11-09T04:03:40.247Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
       "cart": "ok",
       "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-09T04:02:27.797Z",
+      "cartCheckedAt": "2026-11-09T04:03:40.247Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-09T04:02:27.797Z",
+      "lastCartOkAt": "2026-11-09T04:03:40.247Z",
       "inStockSince": "2026-11-09T04:02:27.797Z",
       "cartOkSince": "2026-11-09T04:02:27.797Z",
       "pushedAt": {
-        "cart_ok": "2026-11-09T03:53:25.388Z"
+        "cart_ok": "2026-11-09T04:03:40.247Z"
       }
     },
     {
@@ -54,14 +54,14 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "unknown",
-      "reason": "blocked",
+      "status": "out_of_stock",
+      "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
       "lastInStockAt": "2026-11-09T03:56:48.863Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
-      "unknownStreak": 1,
+      "unknownStreak": 0,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
