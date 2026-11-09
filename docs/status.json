@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T12:28:10.838Z",
+  "updatedAt": "2026-11-09T12:29:03.556Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,7 +34,7 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-09T12:28:10.838Z",
+      "lastInStockAt": "2026-11-09T12:29:03.556Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
@@ -59,13 +59,13 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-09T12:28:10.838Z",
+      "lastInStockAt": "2026-11-09T12:29:03.556Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
-      "cartCheckedAt": "2026-11-09T12:27:50.004Z",
+      "cart": "unknown",
+      "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
+      "cartCheckedAt": "2026-11-09T12:29:03.556Z",
       "verify": true,
       "lastCartOkAt": null,
       "inStockSince": "2026-11-09T12:27:50.004Z",
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-09T12:29:03.556Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": "unknown"
+    },
     {
       "at": "2026-11-09T12:28:10.838Z",
       "id": "mediamarkt",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "ok"
-    },
-    {
-      "at": "2026-11-08T22:48:16.766Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "fail",
-      "cart": null
     }
   ]
 }
