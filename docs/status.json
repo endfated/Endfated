@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T00:55:23.973Z",
+  "updatedAt": "2026-11-09T00:57:16.302Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -8,7 +8,7 @@
       "priority": 1,
       "status": "out_of_stock",
       "reason": "jsonld",
-      "via": "browser",
+      "via": "html",
       "capped": false,
       "price": 899.99,
       "lastInStockAt": null,
@@ -61,7 +61,7 @@
       "price": 899.99,
       "lastInStockAt": "2026-11-09T00:46:43.846Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
-      "unknownStreak": 4,
+      "unknownStreak": 5,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
