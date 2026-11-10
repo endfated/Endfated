@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T12:18:51.203Z",
+  "updatedAt": "2026-11-10T12:19:19.830Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,24 +29,24 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-10T05:24:44.285Z",
+      "lastInStockAt": "2026-11-10T12:19:19.830Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock",
-      "cart": null,
-      "cartDetail": null,
-      "cartCheckedAt": null,
+      "known": "in_stock",
+      "cart": "ok",
+      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-10T12:19:19.830Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-10T05:23:58.481Z",
-      "inStockSince": null,
-      "cartOkSince": null,
+      "lastCartOkAt": "2026-11-10T12:19:19.830Z",
+      "inStockSince": "2026-11-10T12:19:19.830Z",
+      "cartOkSince": "2026-11-10T12:19:19.830Z",
       "pushedAt": {
-        "cart_ok": "2026-11-10T05:23:58.481Z"
+        "cart_ok": "2026-11-10T12:19:19.830Z"
       }
     },
     {
@@ -54,7 +54,7 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -62,13 +62,13 @@
       "lastInStockAt": "2026-11-10T12:18:51.203Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "/de/checkout | zum hauptinhalt wechseln was suchst du? ki-suche menü computer + tablet smartphone + tarife tv + beam",
-      "cartCheckedAt": "2026-11-10T12:18:51.203Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": "2026-11-10T12:18:51.203Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,26 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-10T12:19:19.830Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": null
+    },
+    {
+      "at": "2026-11-10T12:19:19.830Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": null,
+      "cart": "ok"
+    },
     {
       "at": "2026-11-10T12:18:51.203Z",
       "id": "saturn",
@@ -2126,26 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "ok"
-    },
-    {
-      "at": "2026-11-09T03:55:20.040Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "fail",
-      "cart": null
-    },
-    {
-      "at": "2026-11-09T03:54:58.994Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "fail"
     }
   ]
 }
