@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T01:52:26.516Z",
+  "updatedAt": "2026-11-10T01:54:27.626Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -61,7 +61,7 @@
       "price": 899.99,
       "lastInStockAt": "2026-11-10T00:12:15.994Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
-      "unknownStreak": 6,
+      "unknownStreak": 7,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
