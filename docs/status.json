@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T13:27:26.760Z",
+  "updatedAt": "2026-11-12T13:28:32.201Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,21 +29,21 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-12T13:23:52.521Z",
+      "lastInStockAt": "2026-11-12T13:28:32.201Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock",
-      "cart": null,
-      "cartDetail": null,
-      "cartCheckedAt": null,
+      "known": "in_stock",
+      "cart": "fail",
+      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
+      "cartCheckedAt": "2026-11-12T13:28:32.201Z",
       "verify": true,
       "lastCartOkAt": "2026-11-12T13:23:52.521Z",
-      "inStockSince": null,
+      "inStockSince": "2026-11-12T13:28:32.201Z",
       "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-12T13:23:52.521Z"
@@ -84,7 +84,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)",
-      "unknownStreak": 3,
+      "unknownStreak": 4,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-12T13:28:32.201Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": null,
+      "cart": "fail"
+    },
     {
       "at": "2026-11-12T13:25:18.039Z",
       "id": "mediamarkt",
@@ -2135,16 +2145,6 @@
       "to": "out_of_stock",
       "price": 899.99,
       "cartFrom": "blocked",
-      "cart": null
-    },
-    {
-      "at": "2026-11-09T04:15:02.445Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
       "cart": null
     }
   ]
