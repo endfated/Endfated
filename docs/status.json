@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T23:54:12.976Z",
+  "updatedAt": "2026-11-12T23:54:57.142Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,17 +34,17 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-12T23:54:12.976Z",
+      "lastInStockAt": "2026-11-12T23:54:57.142Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "ok",
-      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-12T23:53:26.044Z",
+      "cart": "blocked",
+      "cartDetail": "alle angebote von mediamarkt zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
+      "cartCheckedAt": "2026-11-12T23:54:57.142Z",
       "verify": true,
       "lastCartOkAt": "2026-11-12T23:53:26.044Z",
       "inStockSince": "2026-11-12T23:53:26.044Z",
-      "cartOkSince": "2026-11-12T23:53:26.044Z",
+      "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-12T23:53:26.044Z"
       }
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-12T23:54:57.142Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "ok",
+      "cart": "blocked"
+    },
     {
       "at": "2026-11-12T23:54:12.976Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": "ok",
       "cart": null
-    },
-    {
-      "at": "2026-11-09T04:45:28.374Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "blocked"
     }
   ]
 }
