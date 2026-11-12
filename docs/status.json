@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T13:22:45.882Z",
+  "updatedAt": "2026-11-12T13:23:52.521Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,19 +34,19 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-12T13:22:45.882Z",
+      "lastInStockAt": "2026-11-12T13:23:52.521Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "fail",
-      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
-      "cartCheckedAt": "2026-11-12T13:22:45.882Z",
+      "cart": "ok",
+      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-12T13:23:52.521Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-10T15:02:57.715Z",
+      "lastCartOkAt": "2026-11-12T13:23:52.521Z",
       "inStockSince": "2026-11-12T13:22:45.882Z",
-      "cartOkSince": null,
+      "cartOkSince": "2026-11-12T13:23:52.521Z",
       "pushedAt": {
-        "cart_ok": "2026-11-10T15:02:57.715Z"
+        "cart_ok": "2026-11-12T13:23:52.521Z"
       }
     },
     {
@@ -77,14 +77,14 @@
       "name": "expert",
       "url": "https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html",
       "priority": 4,
-      "status": "out_of_stock",
-      "reason": "no_buy_button",
-      "via": "browser",
+      "status": "unknown",
+      "reason": "error",
+      "via": null,
       "capped": false,
       "price": null,
       "lastInStockAt": null,
       "note": "No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)",
-      "unknownStreak": 0,
+      "unknownStreak": 1,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-12T13:23:52.521Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "fail",
+      "cart": "ok"
+    },
     {
       "at": "2026-11-12T13:22:45.882Z",
       "id": "mediamarkt",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "blocked"
-    },
-    {
-      "at": "2026-11-09T04:12:49.834Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "ok"
     }
   ]
 }
