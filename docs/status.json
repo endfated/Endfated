@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T01:51:41.415Z",
+  "updatedAt": "2026-11-13T01:52:20.959Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,7 +34,7 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-13T01:51:41.415Z",
+      "lastInStockAt": "2026-11-13T01:52:20.959Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
@@ -54,7 +54,7 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -62,13 +62,13 @@
       "lastInStockAt": "2026-11-13T01:51:41.415Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "blocked",
-      "cartDetail": "und alle angebote von saturn zu sehen, vervollständigen sie bitte nachfolgendes captcha.",
-      "cartCheckedAt": "2026-11-13T01:51:41.415Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": "2026-11-13T01:51:41.415Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-13T01:52:20.959Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "blocked",
+      "cart": null
+    },
     {
       "at": "2026-11-13T01:51:41.415Z",
       "id": "saturn",
@@ -2131,16 +2141,6 @@
       "at": "2026-11-09T05:47:03.990Z",
       "id": "mediamarkt",
       "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "unknown"
-    },
-    {
-      "at": "2026-11-09T05:46:14.813Z",
-      "id": "saturn",
-      "name": "Saturn",
       "from": "out_of_stock",
       "to": "in_stock",
       "price": 899.99,
