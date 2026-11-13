@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T01:52:42.435Z",
+  "updatedAt": "2026-11-13T01:53:52.429Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -29,7 +29,7 @@
       "name": "MediaMarkt",
       "url": "https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 2,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -37,14 +37,14 @@
       "lastInStockAt": "2026-11-13T01:52:42.435Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "ok",
-      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
-      "cartCheckedAt": "2026-11-13T01:52:42.435Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": "2026-11-13T01:52:42.435Z",
-      "inStockSince": "2026-11-13T01:51:41.415Z",
-      "cartOkSince": "2026-11-13T01:52:42.435Z",
+      "inStockSince": null,
+      "cartOkSince": null,
       "pushedAt": {
         "cart_ok": "2026-11-13T01:52:42.435Z"
       }
@@ -54,7 +54,7 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -62,13 +62,13 @@
       "lastInStockAt": "2026-11-13T01:52:42.435Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "/de/checkout | erfolgt der abzug bei kauf als eingeloggter mymediamarkt-bzw. mysaturn-kunde im warenkorb. keine barauszahlung. nicht kombinierbar mit anderen (coupon-)aktionen. abgabe nur in haushalts",
-      "cartCheckedAt": "2026-11-13T01:52:42.435Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": "2026-11-13T01:52:42.435Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,26 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-13T01:53:52.429Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": null
+    },
+    {
+      "at": "2026-11-13T01:53:52.429Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "ok",
+      "cart": null
+    },
     {
       "at": "2026-11-13T01:52:42.435Z",
       "id": "saturn",
@@ -2126,26 +2146,6 @@
       "price": 899.99,
       "cartFrom": "fail",
       "cart": null
-    },
-    {
-      "at": "2026-11-09T05:48:50.994Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "ok",
-      "cart": null
-    },
-    {
-      "at": "2026-11-09T05:48:06.211Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": "unknown",
-      "cart": "fail"
     }
   ]
 }
