@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T01:53:52.429Z",
+  "updatedAt": "2026-11-13T01:54:32.781Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -54,21 +54,21 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "out_of_stock",
+      "status": "in_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-13T01:52:42.435Z",
+      "lastInStockAt": "2026-11-13T01:54:32.781Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "out_of_stock",
-      "cart": null,
-      "cartDetail": null,
-      "cartCheckedAt": null,
+      "known": "in_stock",
+      "cart": "fail",
+      "cartDetail": "Seite: n playstation 5 1tb inkl. 2 controller playstation 5 digital inkl. 2 controller leider keine lieferung möglich abholung bitte wähle einen markt ausmarkt auswählen dieser artikel ist bald wieder verfüg",
+      "cartCheckedAt": "2026-11-13T01:54:32.781Z",
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": null,
+      "inStockSince": "2026-11-13T01:54:32.781Z",
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,16 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-13T01:54:32.781Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "out_of_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": null,
+      "cart": "fail"
+    },
     {
       "at": "2026-11-13T01:53:52.429Z",
       "id": "saturn",
@@ -2136,16 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "fail"
-    },
-    {
-      "at": "2026-11-09T05:48:50.994Z",
-      "id": "saturn",
-      "name": "Saturn",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "fail",
-      "cart": null
     }
   ]
 }
