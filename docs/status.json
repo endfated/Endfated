@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T00:59:32.654Z",
+  "updatedAt": "2026-11-13T01:02:00.328Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -77,14 +77,14 @@
       "name": "expert",
       "url": "https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html",
       "priority": 4,
-      "status": "out_of_stock",
-      "reason": "no_buy_button",
-      "via": "browser",
+      "status": "unknown",
+      "reason": "error",
+      "via": null,
       "capped": false,
       "price": null,
       "lastInStockAt": null,
       "note": "No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)",
-      "unknownStreak": 0,
+      "unknownStreak": 1,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
