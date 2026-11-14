@@ -3,7 +3,7 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 14.11.26, 01:49 Uhr
+**Zuletzt geprüft:** 14.11.26, 01:51 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
