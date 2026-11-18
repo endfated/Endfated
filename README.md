@@ -5,11 +5,13 @@
 <!-- STATUS:START -->
 **Zuletzt geprüft:** 18.11.26, 10:22 Uhr
 
+> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**
+
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 18.11.26, 09:48<br>🛒 18.11.26, 09:48 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 18.11.26, 10:22<br>🛒 noch nie |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Bestellbar** (Warenkorb OK) | 899,99 € | 18.11.26, 10:22<br>🛒 18.11.26, 10:22 |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | ⚪ Blockiert (Bot-Schutz) | 899,99 € | 18.11.26, 10:22<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
@@ -19,11 +21,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 18.11.26, 10:22: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: ok
 - 18.11.26, 10:22: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
 - 18.11.26, 09:49: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: blockiert → –
 - 18.11.26, 09:49: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: ok → –
 - 18.11.26, 09:48: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: blockiert
-- 18.11.26, 09:48: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: unklar → –
 
 </details>
 <!-- STATUS:END -->
