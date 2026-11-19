@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T05:30:38.121Z",
+  "updatedAt": "2026-11-19T05:32:44.538Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -84,7 +84,7 @@
       "price": null,
       "lastInStockAt": null,
       "note": "No JSON-LD; buy button only shown when in stock (verified live 2026-11-01)",
-      "unknownStreak": 4,
+      "unknownStreak": 5,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
