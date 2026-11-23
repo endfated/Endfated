@@ -3,13 +3,13 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 23.11.26, 10:52 Uhr
+**Zuletzt geprüft:** 23.11.26, 10:53 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
 | [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 23.11.26, 07:44<br>🛒 23.11.26, 07:42 |
-| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 23.11.26, 07:43<br>🛒 noch nie |
+| [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Verfügbar** (ungeprüft) | 899,99 € | 23.11.26, 10:53<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
 
@@ -19,11 +19,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 23.11.26, 10:53: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
 - 23.11.26, 07:44: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: nein → –
 - 23.11.26, 07:44: MediaMarkt · Warenkorb: unklar → nein
 - 23.11.26, 07:43: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: blockiert → –
 - 23.11.26, 07:43: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: unklar
-- 23.11.26, 07:43: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: ok → –
 
 </details>
 <!-- STATUS:END -->
