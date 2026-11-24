@@ -3,14 +3,12 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 24.11.26, 08:33 Uhr
-
-> 🎉 **Mindestens ein Shop hat die PS5 Pro auf Lager – schnell sein!**
+**Zuletzt geprüft:** 24.11.26, 08:34 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
 | [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
-| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟢 **Bestellbar** (Warenkorb OK) | 899,99 € | 24.11.26, 08:33<br>🛒 24.11.26, 08:32 |
+| [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🟡 Seite: verfügbar, Warenkorb: nein | 899,99 € | 24.11.26, 08:34<br>🛒 24.11.26, 08:32 |
 | [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 24.11.26, 08:32<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
 | [Alternate](https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951) | 🔴 Ausverkauft | 899,99 € | noch nie |
@@ -21,11 +19,11 @@ Nicht überwacht (Bot-Schutz, bitte selbst prüfen): [Amazon.de](https://www.ama
 
 <details><summary>Letzte Änderungen</summary>
 
+- 24.11.26, 08:34: MediaMarkt · Warenkorb: ok → nein
 - 24.11.26, 08:33: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: blockiert → –
 - 24.11.26, 08:32: MediaMarkt 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: ok
 - 24.11.26, 08:31: Saturn 🔴 Ausverkauft → 🟢 **Verfügbar** · Warenkorb: blockiert
 - 23.11.26, 10:55: Saturn 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: unklar → –
-- 23.11.26, 10:55: MediaMarkt 🟢 **Verfügbar** → 🔴 Ausverkauft · Warenkorb: ok → –
 
 </details>
 <!-- STATUS:END -->
