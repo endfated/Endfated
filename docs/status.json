@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T18:12:12.142Z",
+  "updatedAt": "2026-11-24T18:14:11.271Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -13,7 +13,7 @@
       "price": 899.99,
       "lastInStockAt": null,
       "note": "URL from search; page text \"Derzeit nicht vorrätig\" seen when OOS; max 1 per order; queue/bot protection likely",
-      "unknownStreak": 27,
+      "unknownStreak": 28,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
