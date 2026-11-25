@@ -3,11 +3,11 @@
 📱 **Status-Link:** [github.com/endfated/Endfated](https://github.com/endfated/Endfated) – in der GitHub-App oder im Browser öffnen (eingeloggt) und als Favorit speichern. Die Tabelle aktualisiert sich bei jeder Prüfung.
 
 <!-- STATUS:START -->
-**Zuletzt geprüft:** 25.11.26, 20:01 Uhr
+**Zuletzt geprüft:** 25.11.26, 20:03 Uhr
 
 | Shop | Status | Preis | Zuletzt verfügbar |
 |---|---|---|---|
-| [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | ⚪ Shop-Fehler | 899,99 € | noch nie |
+| [PlayStation Direct](https://direct.playstation.com/de-de/buy-consoles/playstation5-pro-console-2-tb) | 🔴 Ausverkauft | 899,99 € | noch nie |
 | [MediaMarkt](https://www.mediamarkt.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 24.11.26, 08:39<br>🛒 24.11.26, 08:32 |
 | [Saturn](https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html) | 🔴 Ausverkauft | 899,99 € | 24.11.26, 08:32<br>🛒 noch nie |
 | [expert](https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364201744-playstation-5-pro.html) | 🔴 Ausverkauft | – | noch nie |
