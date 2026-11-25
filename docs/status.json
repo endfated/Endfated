@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:14:19.644Z",
+  "updatedAt": "2026-11-25T10:16:18.191Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -100,14 +100,14 @@
       "name": "Alternate",
       "url": "https://www.alternate.de/Sony/PlayStation-5-Pro-2-TB-E-Chassis-Spielkonsole/html/product/100160951",
       "priority": 7,
-      "status": "unknown",
-      "reason": "error",
-      "via": "browser",
+      "status": "out_of_stock",
+      "reason": "jsonld",
+      "via": "html",
       "capped": false,
       "price": 899.99,
       "lastInStockAt": null,
       "note": "URL from search (2 variants of listing exist: .../Sony-Interactive-Entertainment/...); markers guessed",
-      "unknownStreak": 1,
+      "unknownStreak": 0,
       "known": "out_of_stock",
       "cart": null,
       "cartDetail": null,
