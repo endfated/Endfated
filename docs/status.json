@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T08:37:24.318Z",
+  "updatedAt": "2026-11-27T08:38:25.974Z",
   "stores": [
     {
       "id": "ps-direct",
@@ -34,17 +34,17 @@
       "via": "browser",
       "capped": false,
       "price": 899.99,
-      "lastInStockAt": "2026-11-27T08:37:24.318Z",
+      "lastInStockAt": "2026-11-27T08:38:25.974Z",
       "note": "URL from search, unverified live; OOS text seen in index; \"In den Warenkorb\" may appear on carousels; likely bot-blocked",
       "unknownStreak": 0,
       "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "locator.click: Timeout 10000ms exceeded.",
-      "cartCheckedAt": "2026-11-27T08:37:24.318Z",
+      "cart": "ok",
+      "cartDetail": "tton lieferung nach hause produkt vervollständigen image.error image.error sony playstation®5 pro - 2 tb spielekonsole 899,99 € 899,99€ dieser artikel wird oft angesehen entferne sony playstation®5",
+      "cartCheckedAt": "2026-11-27T08:38:25.974Z",
       "verify": true,
-      "lastCartOkAt": "2026-11-27T08:34:21.222Z",
+      "lastCartOkAt": "2026-11-27T08:38:25.974Z",
       "inStockSince": "2026-11-27T08:37:24.318Z",
-      "cartOkSince": null,
+      "cartOkSince": "2026-11-27T08:38:25.974Z",
       "pushedAt": {
         "cart_ok": "2026-11-27T08:33:10.101Z"
       }
@@ -54,7 +54,7 @@
       "name": "Saturn",
       "url": "https://www.saturn.de/de/product/_sony-playstationr5-pro-2-tb-konsole-3018022.html",
       "priority": 3,
-      "status": "in_stock",
+      "status": "out_of_stock",
       "reason": "jsonld",
       "via": "browser",
       "capped": false,
@@ -62,13 +62,13 @@
       "lastInStockAt": "2026-11-27T08:37:24.318Z",
       "note": "Same article no. 3018022 as MediaMarkt; JSON-LD OutOfStock seen; likely bot-blocked",
       "unknownStreak": 0,
-      "known": "in_stock",
-      "cart": "unknown",
-      "cartDetail": "/de/checkout | nen rabatt in höhe von 15€ auf den ausgewiesenen kaufpreis des aktionsgeräts im warenkorb. keine barauszahlung. abgabe nur in haushaltsüblichem mengen. nicht kombinierbar mit anderen (r",
-      "cartCheckedAt": "2026-11-27T08:36:52.483Z",
+      "known": "out_of_stock",
+      "cart": null,
+      "cartDetail": null,
+      "cartCheckedAt": null,
       "verify": true,
       "lastCartOkAt": null,
-      "inStockSince": "2026-11-27T08:36:52.483Z",
+      "inStockSince": null,
       "cartOkSince": null,
       "pushedAt": {}
     },
@@ -147,6 +147,26 @@
     }
   ],
   "history": [
+    {
+      "at": "2026-11-27T08:38:25.974Z",
+      "id": "saturn",
+      "name": "Saturn",
+      "from": "in_stock",
+      "to": "out_of_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": null
+    },
+    {
+      "at": "2026-11-27T08:38:25.974Z",
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "from": "in_stock",
+      "to": "in_stock",
+      "price": 899.99,
+      "cartFrom": "unknown",
+      "cart": "ok"
+    },
     {
       "at": "2026-11-27T08:37:24.318Z",
       "id": "mediamarkt",
@@ -2126,26 +2146,6 @@
       "price": 899.99,
       "cartFrom": null,
       "cart": "unknown"
-    },
-    {
-      "at": "2026-11-09T13:21:34.240Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "in_stock",
-      "to": "out_of_stock",
-      "price": 899.99,
-      "cartFrom": "fail",
-      "cart": null
-    },
-    {
-      "at": "2026-11-09T13:21:15.031Z",
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
-      "from": "out_of_stock",
-      "to": "in_stock",
-      "price": 899.99,
-      "cartFrom": null,
-      "cart": "fail"
     }
   ]
 }
